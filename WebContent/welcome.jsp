@@ -27,7 +27,7 @@
     <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <img src="https://gui-projects.s3.amazonaws.com/static/core/img/logos/gui-horizontal.png" alt="" class="brand-gui ml-2 d-none d-sm-block p-2">
+    <img src="E:\project\vuproject\WebContent\img\concavetech.png" height ="50px" width="50px"alt="" class="brand-gui ml-2 d-none d-sm-block p-2">
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -49,9 +49,6 @@
         </div>
       </li>
     </ul>
-    <button class="navbar-toggler aside-menu-toggler" type="button">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
   </header>
 
@@ -72,7 +69,10 @@
                 <a class="nav-link" href="/projects/"><i class="fa fa-paper-plane ml-2"></i> Project's View</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/register/users/"><i class="fa fa-user ml-2"></i> Users Views</a>
+                <a class="nav-link" href="/register/users/"><i class="fa fa-user ml-2"></i> User`s Views</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/register/users/"><i class="fa fa-user ml-2"></i> Task`s Views</a>
               </li>
             </ul>
           </li>
@@ -96,7 +96,7 @@
                 <a class="nav-link" href="<%=request.getContextPath() %>/new-project"><i class="fa fa-plus ml-2"></i> New Project</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/projects/new-task/"><i class="fa fa-plus ml-2"></i> New Task</a>
+                <a class="nav-link" href="<%=request.getContextPath() %>/NewTask"><i class="fa fa-plus ml-2"></i> New Task</a>
               </li>
             </ul>
           </li>
@@ -104,7 +104,7 @@
             <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-user"></i> Users</a>
             <ul class="nav-dropdown-items">
               <li class="nav-item">
-                <a class="nav-link" href="/register/new-user/"><i class="fa fa-user-plus ml-2"></i> Create New User</a>
+                <a class="nav-link" href="<%=request.getContextPath() %>/login.jsp"><i class="fa fa-user-plus ml-2"></i> Create New User</a>
               </li>
             </ul>
           </li>

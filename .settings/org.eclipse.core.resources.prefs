@@ -1,5 +1,10 @@
 eclipse.preferences.version=1
 encoding//WebContent/jspPage/newProject.jsp=UTF-8
+encoding//WebContent/jspPage/newTask.jsp=UTF-8
+encoding//WebContent/jspPage/newUser.jsp=UTF-8
+encoding//WebContent/jspPage/projectView.jsp=UTF-8
+encoding//WebContent/jspPage/taskView.jsp=UTF-8
+encoding//WebContent/jspPage/userView.jsp=UTF-8
 encoding//WebContent/register.jsp=UTF-8
 encoding//WebContent/test.jsp=UTF-8
 encoding//WebContent/welcome.jsp=UTF-8

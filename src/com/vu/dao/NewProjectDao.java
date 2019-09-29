@@ -23,7 +23,7 @@ public class NewProjectDao {
 		String endDate = loginbean.getEndDate();
 		String desp = loginbean.getDesp();
 		
-		String insertQuery = "INSERT INTO projects (id, projectName, projectUsers, startDate, endDate, totalHours, description) VALUES (NULL, ?, ?, ?, ?, ?, ? )";
+		String insertQuery = "INSERT INTO projects (projectName, projectUsers, startDate, endDate,status_id, totalHours, description) VALUES (?, ?, ?, ?, ?, ?,? )";
 		
 		java.sql.PreparedStatement insert = null;
 		Connection con = null;
@@ -36,10 +36,11 @@ public class NewProjectDao {
 
 			insert.setString(1, projectName);
 			insert.setString(2, userName);
-			insert.setString(3, hours);
-			insert.setString(4, startDate);
-			insert.setString(5, endDate);
-			insert.setString(6, desp);
+			insert.setString(3, startDate);
+			insert.setString(4, endDate);
+			insert.setString(5, "2");
+			insert.setString(6, hours);
+			insert.setString(7, desp);
 			int i = insert.executeUpdate();
 
 			if (i != 0)
@@ -72,7 +73,7 @@ public class NewProjectDao {
 			while (resultSet.next()) {
 				
 				userNameDB = resultSet.getString("name");
-				list.add(userNameDB);			
+				list.add(userNameDB);
 			}
 
 		} catch (SQLException e) {
@@ -81,5 +82,62 @@ public class NewProjectDao {
 		return list;
 		
 	}
+	public String newTask(LoginBean loginbean) {
+		String taskName = loginbean.getTask();
+		String projectId= loginbean.getProjectName();
+		String userId = loginbean.getName();
+		String endDate = loginbean.getEndDate();
+		
+		String insertQuery = "INSERT INTO tasks (taskName, projectId,  dueDate, userId) VALUES (?, ?, ?, ? )";
+		
+		java.sql.PreparedStatement insert = null;
+		Connection con = null;
+		Statement statement = null;
+		try {
+			
+			con = DBConnection.createConection();
+			statement = con.createStatement();
+			insert = con.prepareStatement(insertQuery);
 
+			insert.setString(1, taskName);
+			insert.setString(2, projectId);
+			insert.setString(3, endDate);
+			insert.setString(4, userId);
+			int i = insert.executeUpdate();
+
+			if (i != 0)
+				return "SUCCESS";
+
+			con.close();
+			
+		} catch (Exception e) {
+			System.out.println("Enter Task " + e);
+		
+	}
+		return null;
+
+}
+	public ArrayList <String> projectList(){
+		ArrayList <String> pList = new ArrayList <String>();
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+
+		String pNameDB = null;
+		try {
+			con = DBConnection.createConection();
+			statement = con.createStatement();
+			resultSet = statement.executeQuery("SELECT projectName FROM projects;");
+			while (resultSet.next()) {
+				
+				pNameDB = resultSet.getString("projectName");
+				pList.add(pNameDB);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return pList;
+	}
 }

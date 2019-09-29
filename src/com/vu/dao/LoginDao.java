@@ -54,8 +54,9 @@ public class LoginDao {
 		String name = loginbean.getName();
 		String password = loginbean.getPassword();
 		String email = loginbean.getEmail();
+		String role = loginbean.getRole();
 
-		String insertQuery = "INSERT INTO users (id, name, password, email) VALUES (NULL, ?, ?, ? )";
+		String insertQuery = "INSERT INTO users (id, name, password, email, role_id) VALUES (NULL, ?, ?, ?,? )";
 		System.out.println("insert query " + insertQuery);
 		java.sql.PreparedStatement insert = null;
 		Connection con = null;
@@ -70,6 +71,7 @@ public class LoginDao {
 			insert.setString(1, name);
 			insert.setString(2, password);
 			insert.setString(3, email);
+			insert.setString(4, role);
 			int i = insert.executeUpdate();
 
 			if (i != 0)

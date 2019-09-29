@@ -10,6 +10,8 @@ public class LoginBean {
 	private String endDate;
 	private String startDate;
 	private String desp;
+	private String role;
+	private String task;
 	
 	
 	public String getName() {
@@ -65,6 +67,18 @@ public class LoginBean {
 	}
 	public void setDesp(String desp) {
 		this.desp = desp;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
+	public String getTask() {
+		return task;
+	}
+	public void setTask(String task) {
+		this.task = task;
 	}
 	
 

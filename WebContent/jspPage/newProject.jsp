@@ -46,13 +46,13 @@
 						<div class="card-body">
 
 							<input type='hidden' name='csrfmiddlewaretoken'
-								value='vMQaWtnuEVofAOW7Ai3rErYrtXNcnUO0C16GnWycVp7VNM2rozeUtNSJML74lpu2' />
+								value='' />
 							<h1>Project</h1>
 							<p class="text-muted">Create your projects here</p>
 
 							<form action="new-project" method="post">
-								<input type='hidden' name="projectName"
-									value='vMQaWtnuEVofAOW7Ai3rErYrtXNcnUO0C16GnWycVp7VNM2rozeUtNSJML74lpu2' />
+								<input type='hidden' name="projectName1"
+									value='' />
 								<div class="form-group">
 									<div class="input-group">
 										<div class="input-group-append">
@@ -66,13 +66,13 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-form-label">User. <i>Crtl+click
+									<label class="col-form-label">User. <i>Crtl + click
 											for multiple selection</i></label>
 									<div class="input-group">
 										<div class="input-group-append">
 											<span class="input-group-text"><i class="fa fa-users"></i></span>
 										</div>
-										<select id="userNameDB" name="userNameDB" class="form-control"
+										<select id="userName" name="userName" class="form-control"
 											multiple="multiple">
 
 
@@ -81,9 +81,10 @@
 												ArrayList<String> userList = dao.userList();
 												for (int i = 0; i < userList.size(); i++) {
 											%>
-											<option value="1">
+											<option value="userName">
 												<%
 													out.println(userList.get(i));
+												System.out.println("This is jsp user"+i);
 
 													}
 												%> 

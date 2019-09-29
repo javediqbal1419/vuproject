@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -49,8 +50,8 @@ body {
 }
 
 .login-html .tab, .login-form .group .label, .login-form .group .button
-	{
-	text-transform;
+	{text-transform;
+	
 }
 
 .login-html .tab {
@@ -190,9 +191,9 @@ body {
 								type="text" class="input" placeholder="Username">
 						</div>
 						<div class="group">
-							<label for="pass" class="label">Password</label> <input name="password"
-								type="password" class="input" data-type="password">
-								
+							<label for="pass" class="label">Password</label> <input
+								name="password" type="password" class="input"
+								data-type="password">
 						</div>
 						<div class="group">
 							<input id="check" type="checkbox" class="check" checked>
@@ -206,43 +207,54 @@ body {
 						<div class="foot-lnk">
 							<a href="#forgot">Forgot Password?</a>
 						</div>
-						
 					</div>
-					
 	</form>
-	
-	<form action="sign-up" method = "post">
-					<div class="sign-up-htm">
-						<div class="group">
-							<label for="user" class="label">Username</label> <input id="user" name = "user"
-								type="text" class="input">
-						</div>
-						<div class="group"> 
-							<label for="pass" class="label">Password</label> <input id="pass" name="pass"
-								type="password" class="input" data-type="password">
-						</div>
-						<div class="group">
-							<label for="pass" class="label">Repeat Password</label> <input
-								id="pass" type="password" class="input" data-type="password" name="pass" >
-						</div>
-						<div class="group">
-							<label for="pass" class="label">Email Address</label> <input
-								id="email" name = "email" type="email" class="input">
-						</div>
-						<div class="group">
-							<input type="submit" class="button" value="Sign Up">
-						</div>
-						<div class="hr"></div>
-						<div class="foot-lnk">
-							<label for="tab-1">Already Member?</a>
-						</div>
-					</div>
-				</div>
+
+	<form action="sign-up" method="post">
+		<div class="sign-up-htm">
+			<div class="group">
+				<label for="user" class="label">Username</label> <input id="user"
+					name="user" type="text" class="input" required>
 			</div>
+			<div class="group">
+				<label for="pass" class="label">Password</label> <input id="pass1"
+					name="pass" type="password" class="input" data-type="password"
+					required>
+			</div>
+			<div class="group">
+				<label for="pass" class="label">Repeat Password</label> <input
+					id="pass2" type="password" class="input" data-type="password"
+					name="pass" required>
+			</div>
+			<script type="text/javascript">
+				function matchpass() {
+					var x = document.getElementById("pass1").value;
+					var y = document.getElementById("pass2").value;
 
-
+					if (x != y) {
+						alert("password not match");
+					}
+				}
+			</script>
+			<div class="group">
+				<label for="pass" class="label">Email Address</label> <input
+					id="email" name="email" type="email" class="input" required>
+			</div>
+			<div class="group">
+				<label for="pass" class="label">Project Role</label> <input
+					id="role" name="role" type="number" class="input" required>
+			</div>
+			<div class="group">
+				<input type="submit" class="button" value="Sign Up"
+					onclick="matchpass()">
+			</div>
+			<div class="hr"></div>
+			<div class="foot-lnk">
+				<label for="tab-1">Already Member?</a>
+			</div>
 		</div>
-
-</form>
-
+		</div>
+		</div>
+		</div>
+	</form>
 </body>

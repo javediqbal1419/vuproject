@@ -47,11 +47,13 @@ public class LoginServlet extends HttpServlet {
 			String userName = request.getParameter("user");
 			String userPass = request.getParameter("pass");
 			String email = request.getParameter("email");
+			String role = request.getParameter("role");
 
 			LoginBean loginBean = new LoginBean();
 			loginBean.setName(userName);
 			loginBean.setPassword(userPass);
 			loginBean.setEmail(email);
+			loginBean.setRole(role);
 			LoginDao loginDao = new LoginDao();
 			String signupUser = loginDao.signup(loginBean);
 
