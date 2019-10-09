@@ -1,260 +1,99 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="en">
 <head>
-<script src="jquery.js"></script>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description"
+	content="CoreUI - Open Source Bootstrap Admin Template">
+<meta name="author" content="Łukasz Holeczek">
+<meta name="keyword"
+	content="Bootstrap,Admin,Template,Open,Source,AngularJS,Angular,Angular2,Angular 2,Angular4,Angular 4,jQuery,CSS,HTML,RWD,Dashboard,React,React.js,Vue,Vue.js">
+<meta name="google-site-verification"
+	content="83fcqoPn-YTkXathQiicW-x3U2RWZh4PaPUzk91wtjY" />
+<title>Login</title>
 
-<script src="js/bootstrap.min.js"></script>
+<!-- Icons -->
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"
+	integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1"
+	crossorigin="anonymous">
+<link
+	href="https://gui-projects.s3.amazonaws.com/static/core/css/simple-line-icons.min.css"
+	rel="stylesheet">
 
-<link rel="stylesheet" href="css/bootstrap.min.css">
-
-</head>
-<style>
-body {
-	margin: 0;
-}
-
-.login-wrap {
-	width: 100%;
-	margin: auto;
-	max-width: 525px;
-	min-height: 600px;
-	position: relative;
-	background: url() no-repeat center;
-	box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0
-		rgba(0, 0, 0, .19);
-}
-
-.login-html {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	padding: 90px 70px 50px 70px;
-	background: rgba(40, 57, 101, .9);
-}
-
-.login-html .sign-in-htm, .login-html .sign-up-htm {
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	position: absolute;
-	transform: rotateY(180deg);
-	backface-visibility: hidden;
-	transition: all .4s linear;
-}
-
-.login-html .sign-in, .login-html .sign-up, .login-form .group .check {
-	display: none;
-}
-
-.login-html .tab, .login-form .group .label, .login-form .group .button
-	{text-transform;
-	
-}
-
-.login-html .tab {
-	font-size: 22px;
-	margin-right: 15px;
-	padding-bottom: 5px;
-	margin: 0 15px 10px 0;
-	display: inline-block;
-	border-bottom: 2px solid transparent;
-}
-
-.login-html .sign-in:checked+.tab, .login-html .sign-up:checked+.tab {
-	color: #fff;
-	border-color: #1161ee;
-}
-
-.login-form {
-	min-height: 345px;
-	position: relative;
-	perspective: 1000px;
-	transform-style: preserve-3d;
-}
-
-.login-form .group {
-	margin-bottom: 15px;
-}
-
-.login-form .group .label, .login-form .group .input, .login-form .group .button
-	{
-	width: 100%;
-	color: #fff;
-	display: block;
-}
-
-.login-form .group .input, .login-form .group .button {
-	border: none;
-	padding: 15px 20px;
-	border-radius: 25px;
-	background: rgba(255, 255, 255, .1);
-}
-
-.login-form .group input[data-type="password"] {
-	text-security: circle;
-	-webkit-text-security: circle;
-}
-
-.login-form .group .label {
-	color: #aaa;
-	font-size: 12px;
-}
-
-.login-form .group .button {
-	background: #1161ee;
-}
-
-.login-form .group label .icon {
-	width: 15px;
-	height: 15px;
-	border-radius: 2px;
-	position: relative;
-	display: inline-block;
-	background: rgba(255, 255, 255, .1);
-}
-
-.login-form .group label .icon:before, .login-form .group label .icon:after
-	{
-	content: '';
-	width: 10px;
-	height: 2px;
-	background: #fff;
-	position: absolute;
-	transition: all .2s ease-in-out 0s;
-}
-
-.login-form .group label .icon:before {
-	left: 3px;
-	width: 5px;
-	bottom: 6px;
-	transform: scale(0) rotate(0);
-}
-
-.login-form .group label .icon:after {
-	top: 6px;
-	right: 0;
-	transform: scale(0) rotate(0);
-}
-
-.login-form .group .check:checked+label {
-	color: #fff;
-}
-
-.login-form .group .check:checked+label .icon {
-	background: #1161ee;
-}
-
-.login-form .group .check:checked+label .icon:before {
-	transform: scale(1) rotate(45deg);
-}
-
-.login-form .group .check:checked+label .icon:after {
-	transform: scale(1) rotate(-45deg);
-}
-
-.login-html .sign-in:checked+.tab+.sign-up+.tab+.login-form .sign-in-htm
-	{
-	transform: rotate(0);
-}
-
-.login-html .sign-up:checked+.tab+.login-form .sign-up-htm {
-	transform: rotate(0);
-}
-
-.hr {
-	height: 2px;
-	margin: 60px 0 50px 0;
-	background: rgba(255, 255, 255, .2);
-}
-
-.foot-lnk {
-	text-align: center;
-}
-</style>
+<!-- Main styles for this application -->
+<link
+	href="https://gui-projects.s3.amazonaws.com/static/core/css/estilo.css"
+	rel="stylesheet">
+<link
+	href="https://gui-projects.s3.amazonaws.com/static/core/css/style.css"
+	rel="stylesheet">
 
 </head>
-<body>
-	<form action="login">
-		<div class="login-wrap">
-			<div class="login-html">
-				<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label
-					for="tab-1" class="tab">Sign In</label> <input id="tab-2"
-					type="radio" name="tab" class="sign-up"><label for="tab-2"
-					class="tab">Sign Up</label>
-				<div class="login-form">
-					<div class="sign-in-htm">
-						<div class="group">
-							<label for="user" class="label">Name</label> <input name="name"
-								type="text" class="input" placeholder="Username">
-						</div>
-						<div class="group">
-							<label for="pass" class="label">Password</label> <input
-								name="password" type="password" class="input"
-								data-type="password">
-						</div>
-						<div class="group">
-							<input id="check" type="checkbox" class="check" checked>
-							<label for="check"><span class="icon"></span> Keep me
-								Signed in</label>
-						</div>
-						<div class="group">
-							<input type="submit" class="button" value="Sign In">
-						</div>
-						<div class="hr"></div>
-						<div class="foot-lnk">
-							<a href="#forgot">Forgot Password?</a>
+
+<body class="app flex-row align-items-center">
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8">
+				<div class="card-group">
+					<div class="card p-4">
+						<div class="card-body">
+							<form action="login">
+								<input type='hidden' name='' value='' />
+								<h1>Login</h1>
+								<p class="text-muted">Sign In to your account</p>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text"><i class="fa fa-user"></i></span>
+									</div>
+									<input type="text" class="form-control" name="name"
+										placeholder="Username" id="name" maxlength="254" required>
+								</div>
+								<div class="input-group mb-4">
+									<div class="input-group-prepend">
+										<span class="input-group-text"><i
+											class="fa fa-asterisk"></i></span>
+									</div>
+									<input type="password" class="form-control" name="password"
+										placeholder="Password" id="password" maxlength="None" required>
+								</div>
+								<div class="group">
+									<input id="check" type="checkbox" class="check" checked>
+									<label for="check"><span class="icon"></span> Keep me
+										Signed in</label>
+								</div>
+								<div class="row">
+									<div class="col-6">
+										<button type="submit" class="btn btn-primary px-4">Login</button>
+									</div>
+									<div class="col-6 text-right">
+										<button type="button" class="btn btn-link px-0">Forgot
+											password?</button>
+									</div>
+
+								</div>
+							</form>
 						</div>
 					</div>
-	</form>
+					<div class="card text-white bg-primary py-5">
+						<div class="card-body text-center">
+							<div>
+								<h2>Sign up</h2>
+								<p class="mt-4">Register now, it's free.</p>
+								<a href="<%=request.getContextPath()%>/jspPage/newUser.jsp"
+									class="btn btn-primary active mt-3">Register Now!</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
-	<form action="sign-up" method="post">
-		<div class="sign-up-htm">
-			<div class="group">
-				<label for="user" class="label">Username</label> <input id="user"
-					name="user" type="text" class="input" required>
-			</div>
-			<div class="group">
-				<label for="pass" class="label">Password</label> <input id="pass1"
-					name="pass" type="password" class="input" data-type="password"
-					required>
-			</div>
-			<div class="group">
-				<label for="pass" class="label">Repeat Password</label> <input
-					id="pass2" type="password" class="input" data-type="password"
-					name="pass" required>
-			</div>
-			<script type="text/javascript">
-				function matchpass() {
-					var x = document.getElementById("pass1").value;
-					var y = document.getElementById("pass2").value;
 
-					if (x != y) {
-						alert("password not match");
-					}
-				}
-			</script>
-			<div class="group">
-				<label for="pass" class="label">Email Address</label> <input
-					id="email" name="email" type="email" class="input" required>
-			</div>
-			<div class="group">
-				<label for="pass" class="label">Project Role</label> <input
-					id="role" name="role" type="number" class="input" required>
-			</div>
-			<div class="group">
-				<input type="submit" class="button" value="Sign Up"
-					onclick="matchpass()">
-			</div>
-			<div class="hr"></div>
-			<div class="foot-lnk">
-				<label for="tab-1">Already Member?</a>
-			</div>
-		</div>
-		</div>
-		</div>
-		</div>
-	</form>
 </body>
+
+
+</html>

@@ -6,30 +6,31 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.vu.bo.User;
 import com.vu.java.LoginBean;
 import com.vu.util.DBConnection;
 
 public class NewProjectDao {
 	public NewProjectDao() {
-		
+
 	}
-	
+
 	public String addProject(LoginBean loginbean) {
-		
+
 		String projectName = loginbean.getProjectName();
 		String userName = loginbean.getName();
 		String hours = loginbean.getHours();
 		String startDate = loginbean.getStartDate();
 		String endDate = loginbean.getEndDate();
 		String desp = loginbean.getDesp();
-		
+
 		String insertQuery = "INSERT INTO projects (projectName, projectUsers, startDate, endDate,status_id, totalHours, description) VALUES (?, ?, ?, ?, ?, ?,? )";
-		
+
 		java.sql.PreparedStatement insert = null;
 		Connection con = null;
 		Statement statement = null;
 		try {
-			
+
 			con = DBConnection.createConection();
 			statement = con.createStatement();
 			insert = con.prepareStatement(insertQuery);
@@ -47,54 +48,53 @@ public class NewProjectDao {
 				return "SUCCESS";
 
 			con.close();
-			
+
 		} catch (Exception e) {
 			System.out.println("Enter Project " + e);
 		}
 
-		
 		return "Please Enter Project Name ";
-		
-		
+
 	}
-	public ArrayList<String> userList (){
-		ArrayList<String> list = new ArrayList<String>();
-	
+
+	public ArrayList<User> userList() {
+		ArrayList<User> list = new ArrayList<User>();
+
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
 
-		String userNameDB = null;
-		
 		try {
 			con = DBConnection.createConection();
 			statement = con.createStatement();
-			resultSet = statement.executeQuery("SELECT NAME FROM users;");
+			resultSet = statement.executeQuery("SELECT * FROM users;");
 			while (resultSet.next()) {
-				
-				userNameDB = resultSet.getString("name");
-				list.add(userNameDB);
+				User user = new User();
+				user.setId(resultSet.getInt("id"));
+				user.setName(resultSet.getString("name"));
+				list.add(user);
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return list;
-		
+
 	}
+
 	public String newTask(LoginBean loginbean) {
 		String taskName = loginbean.getTask();
-		String projectId= loginbean.getProjectName();
+		String projectId = loginbean.getProjectName();
 		String userId = loginbean.getName();
 		String endDate = loginbean.getEndDate();
-		
-		String insertQuery = "INSERT INTO tasks (taskName, projectId,  dueDate, userId) VALUES (?, ?, ?, ? )";
-		
+
+		String insertQuery = "INSERT INTO tasks (taskName, projectId,  endDate, userId) VALUES (?, ?, ?, ? )";
+
 		java.sql.PreparedStatement insert = null;
 		Connection con = null;
 		Statement statement = null;
 		try {
-			
+
 			con = DBConnection.createConection();
 			statement = con.createStatement();
 			insert = con.prepareStatement(insertQuery);
@@ -109,16 +109,17 @@ public class NewProjectDao {
 				return "SUCCESS";
 
 			con.close();
-			
+
 		} catch (Exception e) {
 			System.out.println("Enter Task " + e);
-		
-	}
+
+		}
 		return null;
 
-}
-	public ArrayList <String> projectList(){
-		ArrayList <String> pList = new ArrayList <String>();
+	}
+
+	public ArrayList<String> projectList() {
+		ArrayList<String> pList = new ArrayList<String>();
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -129,7 +130,7 @@ public class NewProjectDao {
 			statement = con.createStatement();
 			resultSet = statement.executeQuery("SELECT projectName FROM projects;");
 			while (resultSet.next()) {
-				
+
 				pNameDB = resultSet.getString("projectName");
 				pList.add(pNameDB);
 			}
@@ -137,7 +138,36 @@ public class NewProjectDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return pList;
+	}
+
+	public ArrayList<String> taskList() {
+		ArrayList<String> tList = new ArrayList<String>();
+		StringBuilder query = new StringBuilder(
+				"SELECT u.`name`, t.`taskName`,p.`projectName`,ts.`status` FROM `users` u,`tasks` t,`projects` p, `task_status` ts ");
+		query.append(" WHERE p.`id` = t.`projectId` ");
+		query.append("AND t.`userId` = u.`id` ");
+		query.append("AND t.`task_status_id` = ts.`id` ");
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+
+		String tNameDB = null;
+		try {
+			con = DBConnection.createConection();
+			statement = con.createStatement();
+			resultSet = statement.executeQuery(query.toString());
+			while (resultSet.next()) {
+
+				
+				
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return tList;
 	}
 }

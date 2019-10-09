@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.vu.bo.User;
 import com.vu.dao.NewProjectDao;
 import com.vu.java.LoginBean;
 
@@ -25,8 +26,11 @@ public class NewProjectServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		// method to return user list from userDao
+		NewProjectDao dao = new NewProjectDao();
+		ArrayList<User> userList = dao.userList();
 		
-		request.setAttribute("userList", "userNameDB");
+		request.setAttribute("userList", userList);
+		
 		request.getRequestDispatcher("jspPage/newProject.jsp").forward(request, response);
 	}
 

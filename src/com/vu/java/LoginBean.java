@@ -2,6 +2,8 @@ package com.vu.java;
 
 public class LoginBean {
 	private String name;
+	private String firstName;
+	private String lastName;
 	private String password;
 	private String email;
 	private String projectName;
@@ -79,6 +81,18 @@ public class LoginBean {
 	}
 	public void setTask(String task) {
 		this.task = task;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	
 

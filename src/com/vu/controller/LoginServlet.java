@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.vu.dao.LoginDao;
 import com.vu.java.LoginBean;
 
-@WebServlet(name = "LoginServlet", urlPatterns = { "/login", "/sign-up" })
+@WebServlet(name = "LoginServlet", urlPatterns = { "/login", "/jspPage/signup" })
 public class LoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -31,7 +31,7 @@ public class LoginServlet extends HttpServlet {
 			String userValidate = loginDao.authenticateUser(loginBean);
 
 			if (userValidate.equals("SUCCESS")) {
-				response.sendRedirect("welcome.jsp");
+				response.sendRedirect("jspPage/welcome.jsp");
 
 			} else {
 				request.setAttribute("errMessage", userValidate);
@@ -40,17 +40,23 @@ public class LoginServlet extends HttpServlet {
 
 		}
 
-		else if (url.contains("sign-up"))
+		else if (url.contains("signup"))
+			
 
 		{
+			System.out.println("Not Signup this page");
 			// do signup
 			String userName = request.getParameter("user");
-			String userPass = request.getParameter("pass");
+			String firstName = request.getParameter("firstName");
+			String lastName = request.getParameter("lastName");
+			String userPass = request.getParameter("pass1");
 			String email = request.getParameter("email");
 			String role = request.getParameter("role");
 
 			LoginBean loginBean = new LoginBean();
 			loginBean.setName(userName);
+			loginBean.setFirstName(firstName);
+			loginBean.setLastName(lastName);
 			loginBean.setPassword(userPass);
 			loginBean.setEmail(email);
 			loginBean.setRole(role);
@@ -59,7 +65,7 @@ public class LoginServlet extends HttpServlet {
 
 			if (signupUser.equals("SUCCESS")) {
 				
-				response.sendRedirect("welcome.jsp");
+				response.sendRedirect("jspPage/welcome.jsp");
 				
 				} else {
 				System.out.println("Not Signup");

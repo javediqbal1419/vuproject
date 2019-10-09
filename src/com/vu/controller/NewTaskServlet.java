@@ -1,12 +1,15 @@
 package com.vu.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.vu.bo.User;
 import com.vu.dao.NewProjectDao;
 import com.vu.java.LoginBean;
 
@@ -17,17 +20,23 @@ public class NewTaskServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+		NewProjectDao dao = new NewProjectDao();
+		ArrayList<User> userList = dao.userList();
+		
+		request.setAttribute("userList", userList);
+		
 		request.getRequestDispatcher("jspPage/newTask.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		String taskName = request.getParameter("taskName");
 		String projectName = request.getParameter("projectName");
 		String userName = request.getParameter("userName");
 		String endDate = request.getParameter("endDate");
 
 		LoginBean loginBean = new LoginBean();
+		loginBean.setTask(taskName);
 		loginBean.setProjectName(projectName);
 		loginBean.setName(userName);
 		loginBean.setEndDate(endDate);

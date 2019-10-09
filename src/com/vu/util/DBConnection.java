@@ -14,13 +14,12 @@ public class DBConnection {
 		try {
 			try {
 				Class.forName("com.mysql.jdbc.Driver");
-//				Class.forName("java.sql.Connection");
 				con =DriverManager.getConnection(url, username, password);
 				
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
-			System.out.println("Printing connection object: " +con);
+//			System.out.println("Printing connection object: " +con);
 			
 			
 		} catch (Exception e) {

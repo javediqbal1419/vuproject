@@ -72,7 +72,10 @@
                 <a class="nav-link" href="/register/users/"><i class="fa fa-user ml-2"></i> User`s Views</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/register/users/"><i class="fa fa-user ml-2"></i> Task`s Views</a>
+                <a class="nav-link" href="<%=request.getContextPath()%>/TaskViewServlet"><i class="fa fa-tasks fa_custom fa-2x"></i> Task`s Views</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/register/users/"><i class="fa fa-user ml-2"></i> Cost`s Views</a>
               </li>
             </ul>
           </li>
@@ -104,7 +107,7 @@
             <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-user"></i> Users</a>
             <ul class="nav-dropdown-items">
               <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath() %>/login.jsp"><i class="fa fa-user-plus ml-2"></i> Create New User</a>
+                <a class="nav-link" href="<%=request.getContextPath() %>/jspPage/newUser.jsp"><i class="fa fa-user-plus ml-2"></i> Create New User</a>
               </li>
             </ul>
           </li>

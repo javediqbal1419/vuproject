@@ -1,3 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	import="com.vu.dao.NewProjectDao" 
+	import="java.util.*"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +17,7 @@
 	content="Bootstrap,Admin,Template,Open,Source,AngularJS,Angular,Angular2,Angular 2,Angular4,Angular 4,jQuery,CSS,HTML,RWD,Dashboard,React,React.js,Vue,Vue.js">
 <meta name="google-site-verification"
 	content="83fcqoPn-YTkXathQiicW-x3U2RWZh4PaPUzk91wtjY" />
-<title>Project View</title>
+<title>Task View</title>
 
 <!-- Icons -->
 <link rel="stylesheet"
@@ -56,7 +61,7 @@
 
 			</a></li>
 		</ul>
-		
+
 	</header>
 
 	<div class="app-body">
@@ -74,8 +79,11 @@
 							<li class="nav-item"><a class="nav-link" href="/projects/"><i
 									class="fa fa-paper-plane ml-2"></i> Project's View</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="/register/users/"><i class="fa fa-user ml-2"></i>
+								href="/vuproject/taskView.jsp/"><i class="fa fa-user ml-2"></i>
 									Users Views</a></li>
+							<li class="nav-item"><a class="nav-link"
+								href="/vuproject/jspPage/taskView.jsp"><i
+									class="fa fa-user ml-2"></i> Task`s Views</a></li>
 						</ul></li>
 
 					<!--<li class="nav-title">-->
@@ -124,7 +132,7 @@
 			<li class="breadcrumb-item active">Views</li>
 		</ol>
 
-				<div class="col-md-12">
+		<div class="col-md-12">
 			<div class="card">
 				<div class="card-header">
 					<strong>22 Active Task | 20 Inactive Task</strong>
@@ -136,12 +144,33 @@
 							<div class="card mx-2">
 								<div class="card-body">
 									<div class="h4 m-0">
-										Task Name
 
-										<p class="text-right lead text-danger">Inactive</p>
+										<%
+											NewProjectDao tDao = new NewProjectDao();
+											ArrayList<String> tList = tDao.taskList();
+											for (int j = 0; j < tList.size(); j++) {
+										%>
+										<%
+											out.println(tList.get(j));
+
+											}
+										%>
+
+										<p class="text-right lead text-danger">Task Status</p>
 
 									</div>
-									<div>a11</div>
+									<div>
+										<%
+											NewProjectDao pDao = new NewProjectDao();
+											ArrayList<String> pList = pDao.projectList();
+											for (int j = 0; j < pList.size(); j++) {
+										%>
+										<%
+											out.println(pList.get(j));
+
+											}
+										%>
+									</div>
 									<p class="text-muted mb-0 text-right">22.0%</p>
 									<div class="progress progress-xs mb-3">
 
@@ -150,7 +179,7 @@
 											aria-valuemin="0" aria-valuemax="100"></div>
 
 									</div>
-									<small class="text-muted">Javed</small>
+									<small class="text-muted"> User Name at here </small>
 								</div>
 							</div>
 						</div>
@@ -233,14 +262,13 @@
 		</div>
 
 		</main>
-
-		
 	</div>
 
 	<footer class="app-footer">
-    <span><a href="https://javediqbal1419.netlify.com"> Copyright </a> © 2019 | Project Manager (PMAN)  Developed by Javed.</span>
-  </footer>
-  
+		<span><a href="https://javediqbal1419.netlify.com">
+				Copyright </a> © 2019 | Project Manager (PMAN) Developed by Javed.</span>
+	</footer>
+
 	<!-- Bootstrap and necessary plugins -->
 	<script
 		src="https://gui-projects.s3.amazonaws.com/static/core/vendors/js/jquery.min.js"></script>

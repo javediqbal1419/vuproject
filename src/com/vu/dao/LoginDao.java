@@ -9,7 +9,6 @@ import com.mysql.jdbc.PreparedStatement;
 import com.vu.java.LoginBean;
 import com.vu.util.DBConnection;
 
-
 public class LoginDao {
 	static int userId;
 	static int projectId;
@@ -40,7 +39,7 @@ public class LoginDao {
 				if (name.equals(userNameDB) && password.equals(passwordDB)) {
 					return "SUCCESS";
 				} else {
-				
+
 				}
 			}
 
@@ -52,11 +51,13 @@ public class LoginDao {
 
 	public String signup(LoginBean loginbean) {
 		String name = loginbean.getName();
+		String firstname = loginbean.getFirstName();
+		String lastname = loginbean.getLastName();
 		String password = loginbean.getPassword();
 		String email = loginbean.getEmail();
 		String role = loginbean.getRole();
 
-		String insertQuery = "INSERT INTO users (id, name, password, email, role_id) VALUES (NULL, ?, ?, ?,? )";
+		String insertQuery = "INSERT INTO users (name, firstName, lastName, email, password,  role_id) VALUES ( ?, ?,?, ?, ?,? )";
 		System.out.println("insert query " + insertQuery);
 		java.sql.PreparedStatement insert = null;
 		Connection con = null;
@@ -69,9 +70,11 @@ public class LoginDao {
 			insert = con.prepareStatement(insertQuery);
 
 			insert.setString(1, name);
-			insert.setString(2, password);
-			insert.setString(3, email);
-			insert.setString(4, role);
+			insert.setString(2, firstname);
+			insert.setString(3, lastname);
+			insert.setString(4, email);
+			insert.setString(5, password);
+			insert.setString(6, role);
 			int i = insert.executeUpdate();
 
 			if (i != 0)
@@ -80,7 +83,8 @@ public class LoginDao {
 			con.close();
 
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e);
+			
 		}
 		return "Invalid email";
 

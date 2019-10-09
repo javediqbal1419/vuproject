@@ -12,7 +12,7 @@
 	content="Bootstrap,Admin,Template,Open,Source,AngularJS,Angular,Angular2,Angular 2,Angular4,Angular 4,jQuery,CSS,HTML,RWD,Dashboard,React,React.js,Vue,Vue.js">
 <meta name="google-site-verification"
 	content="83fcqoPn-YTkXathQiicW-x3U2RWZh4PaPUzk91wtjY" />
-<title>Project View</title>
+<title>Cost View</title>
 
 <!-- Icons -->
 <link rel="stylesheet"
@@ -56,7 +56,7 @@
 
 			</a></li>
 		</ul>
-
+		
 	</header>
 
 	<div class="app-body">
@@ -75,10 +75,7 @@
 									class="fa fa-paper-plane ml-2"></i> Project's View</a></li>
 							<li class="nav-item"><a class="nav-link"
 								href="/register/users/"><i class="fa fa-user ml-2"></i>
-									User`s Views</a></li>
-							<li class="nav-item"><a class="nav-link"
-								href="/register/users/"><i class="fa fa-user ml-2"></i>
-									Task`s Views</a></li>
+									Users Views</a></li>
 						</ul></li>
 
 					<!--<li class="nav-title">-->
@@ -127,138 +124,10 @@
 			<li class="breadcrumb-item active">Views</li>
 		</ol>
 
-		<div class="col-md-12">
+				<div class="col-md-12">
 			<div class="card">
 				<div class="card-header">
-					<strong> Total Number of Active Projects</strong>
-				</div>
-				<div class="card-body">
-					<div class="row">
-
-						<div class="col-sm-8">
-							<div class="row">
-								<div class="col-sm-6">
-									<div class="callout callout-dark">
-										<small class="text-muted">Tasks</small> <br> <strong
-											class="h4">41</strong>
-										<div class="chart-wrapper">
-											<div class="chartjs-size-monitor"
-												style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-												<div class="chartjs-size-monitor-expand"
-													style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-													<div
-														style="position: absolute; width: 1000000px; height: 1000000px; left: 0; top: 0"></div>
-												</div>
-												<div class="chartjs-size-monitor-shrink"
-													style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-													<div
-														style="position: absolute; width: 200%; height: 200%; left: 0; top: 0"></div>
-												</div>
-											</div>
-											<canvas id="sparkline-chart-3" width="86" height="25"
-												class="chartjs-render-monitor"
-												style="display: block; width: 86px; height: 25px;"></canvas>
-										</div>
-									</div>
-								</div>
-
-								<div class="col-sm-6">
-									<div class="callout callout-danger">
-										<small class="text-muted">Overdue Tasks </small> <br> <strong
-											class="h4">12</strong>
-										<div class="chart-wrapper">
-											<div class="chartjs-size-monitor"
-												style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-												<div class="chartjs-size-monitor-expand"
-													style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-													<div
-														style="position: absolute; width: 1000000px; height: 1000000px; left: 0; top: 0"></div>
-												</div>
-												<div class="chartjs-size-monitor-shrink"
-													style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-													<div
-														style="position: absolute; width: 200%; height: 200%; left: 0; top: 0"></div>
-												</div>
-											</div>
-											<canvas id="sparkline-chart-4" width="86" height="25"
-												class="chartjs-render-monitor"
-												style="display: block; width: 86px; height: 25px;"></canvas>
-										</div>
-									</div>
-								</div>
-
-
-							</div>
-
-							<hr class="mt-0">
-							<ul class="horizontal-bars type-2">
-								<li><i class="fa fa-percent"></i> <span class="title">Projects</span>
-									<span class="value">17.2%</span>
-									<div class="bars">
-										<div class="progress progress-xs">
-											<div class="progress-bar bg-warning" role="progressbar"
-												style="width: 17.2%" aria-valuenow="43" aria-valuemin="0"
-												aria-valuemax="100"></div>
-										</div>
-									</div></li>
-								<li class="divider"></li>
-
-								<li class="my-2"><span class="badge badge-danger"
-									style="width: 50px;">Stuck</span> <span class="title ml-1">a11</span>
-
-									<span class="value"> <span class="text-muted small">deadline:
-									</span>Dec. 11, 2019 <span class="text-muted small">(22.0%)</span>
-								</span>
-									<div class="bars">
-										<div class="progress progress-xs">
-											<div class="progress-bar bg-success" role="progressbar"
-												style="width: 22.0%" aria-valuenow="22.0" aria-valuemin="0"
-												aria-valuemax="100"></div>
-										</div>
-									</div></li>
-
-								<li class="my-2"><span class="badge badge-info"
-									style="width: 50px;">Working</span> <span class="title ml-1">aaa</span>
-
-									<span class="value"> <span class="text-muted small">deadline:
-									</span>Jan. 2, 2010 <span class="text-muted small">(5.0%)</span>
-								</span>
-									<div class="bars">
-										<div class="progress progress-xs">
-											<div class="progress-bar bg-success" role="progressbar"
-												style="width: 5.0%" aria-valuenow="5.0" aria-valuemin="0"
-												aria-valuemax="100"></div>
-										</div>
-									</div></li>
-
-								<li class="my-2"><span class="badge badge-success"
-									style="width: 50px;">Done!</span> <span class="title ml-1">ERP
-										Implementation</span> <span class="value"> <span
-										class="text-muted small">deadline: </span>April 18, 2018 <span
-										class="text-muted small">(100.0%)</span>
-								</span>
-									<div class="bars">
-										<div class="progress progress-xs">
-											<div class="progress-bar bg-success" role="progressbar"
-												style="width: 100.0%" aria-valuenow="100.0"
-												aria-valuemin="0" aria-valuemax="100"></div>
-										</div>
-									</div></li>
-
-							</ul>
-						</div>
-
-					</div>
-
-					<br>
-
-				</div>
-			</div>
-		</div>
-		<div class="col-md-12">
-			<div class="card">
-				<div class="card-header">
-					<strong>22 Active Projects</strong>
+					<strong>22 Active Task | 20 Inactive Task</strong>
 				</div>
 				<div class="card-body">
 					<div class="row">
@@ -267,9 +136,9 @@
 							<div class="card mx-2">
 								<div class="card-body">
 									<div class="h4 m-0">
-										Dec. 11, 2019
+										Task Name
 
-										<p class="text-right lead text-danger">Stuck</p>
+										<p class="text-right lead text-danger">Inactive</p>
 
 									</div>
 									<div>a11</div>
@@ -281,7 +150,7 @@
 											aria-valuemin="0" aria-valuemax="100"></div>
 
 									</div>
-									<small class="text-muted">sfdff22</small>
+									<small class="text-muted">Javed</small>
 								</div>
 							</div>
 						</div>
@@ -290,7 +159,7 @@
 							<div class="card mx-2">
 								<div class="card-body">
 									<div class="h4 m-0">
-										Jan. 2, 2010
+										Task Name
 
 										<p class="text-right lead text-success">Working</p>
 
@@ -365,14 +234,13 @@
 
 		</main>
 
-
+		
 	</div>
 
 	<footer class="app-footer">
-		<span><a href="https://javediqbal1419.netlify.com/">
-				Copyright </a> © 2019 | Project Manager (PMAN) Developed by Javed.</span>
-	</footer>
-
+    <span><a href="https://javediqbal1419.netlify.com"> Copyright </a> © 2019 | Project Manager (PMAN)  Developed by Javed.</span>
+  </footer>
+  
 	<!-- Bootstrap and necessary plugins -->
 	<script
 		src="https://gui-projects.s3.amazonaws.com/static/core/vendors/js/jquery.min.js"></script>
