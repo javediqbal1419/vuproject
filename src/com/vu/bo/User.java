@@ -5,6 +5,7 @@ public class User {
 	private String name;
 	public int getId() {
 		return id;
+		// this is new user
 	}
 	public void setId(int id) {
 		this.id = id;
