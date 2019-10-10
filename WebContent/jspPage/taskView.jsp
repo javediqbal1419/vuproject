@@ -144,32 +144,21 @@
 							<div class="card mx-2">
 								<div class="card-body">
 									<div class="h4 m-0">
+									
+									
+									<c:forEach items="${tList}" var="task" varStatus="countST">
+													<option value="${task.id}"><c:out value="${task.name}"></c:out></option>
+												</c:forEach>
+									
 
-										<%
-											NewProjectDao tDao = new NewProjectDao();
-											ArrayList<String> tList = tDao.taskList();
-											for (int j = 0; j < tList.size(); j++) {
-										%>
-										<%
-											out.println(tList.get(j));
-
-											}
-										%>
 
 										<p class="text-right lead text-danger">Task Status</p>
 
 									</div>
 									<div>
-										<%
-											NewProjectDao pDao = new NewProjectDao();
-											ArrayList<String> pList = pDao.projectList();
-											for (int j = 0; j < pList.size(); j++) {
-										%>
-										<%
-											out.println(pList.get(j));
-
-											}
-										%>
+									
+									Projects
+										
 									</div>
 									<p class="text-muted mb-0 text-right">22.0%</p>
 									<div class="progress progress-xs mb-3">

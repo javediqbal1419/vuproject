@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.vu.bo.Task;
 import com.vu.dao.NewProjectDao;
 
 @WebServlet("/TaskViewServlet")
@@ -26,7 +27,7 @@ public class TaskViewServlet extends HttpServlet {
 		
 
 				NewProjectDao dao = new NewProjectDao();
-				ArrayList<String> taskList = dao.taskList();
+				ArrayList<Task> taskList = dao.taskList();
 				
 				request.setAttribute("taskList", taskList);
 				

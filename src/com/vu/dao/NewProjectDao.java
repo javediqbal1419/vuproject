@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.vu.bo.Task;
 import com.vu.bo.User;
 import com.vu.java.LoginBean;
 import com.vu.util.DBConnection;
@@ -142,8 +143,8 @@ public class NewProjectDao {
 		return pList;
 	}
 
-	public ArrayList<String> taskList() {
-		ArrayList<String> tList = new ArrayList<String>();
+	public ArrayList<Task> taskList() {
+		ArrayList<Task> tList = new ArrayList<Task>();
 		StringBuilder query = new StringBuilder(
 				"SELECT u.`name`, t.`taskName`,p.`projectName`,ts.`status` FROM `users` u,`tasks` t,`projects` p, `task_status` ts ");
 		query.append(" WHERE p.`id` = t.`projectId` ");
@@ -152,13 +153,18 @@ public class NewProjectDao {
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
-
-		String tNameDB = null;
+		
 		try {
 			con = DBConnection.createConection();
 			statement = con.createStatement();
 			resultSet = statement.executeQuery(query.toString());
 			while (resultSet.next()) {
+				Task ts = new Task();
+				ts.setName(resultSet.getString("name"));
+				ts.setProjectName(resultSet.getString("projectName"));
+				ts.setTaskName(resultSet.getString("taskName"));
+				ts.setStatus(resultSet.getString("status"));
+				tList.add(ts);
 
 				
 				
