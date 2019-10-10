@@ -7,6 +7,7 @@ public class LoginBean {
 	private String password;
 	private String email;
 	private String projectName;
+	private String projectId;
 	private String p_status;
 	private String hours;
 	private String endDate;
@@ -93,6 +94,12 @@ public class LoginBean {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	public String getProjectId() {
+		return projectId;
+	}
+	public void setProjectId(String projectId) {
+		this.projectId = projectId;
 	}
 	
 

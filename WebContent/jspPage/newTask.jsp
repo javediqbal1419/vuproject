@@ -74,7 +74,7 @@
 												<span class="input-group-text"><i
 													class="fa fa-puzzle-piece"></i></span>
 											</div>
-											<select id = "projectName" name="projectName" class="form-control">
+											<select id = "projectId" name="projectId" class="form-control">
 												<%
 													NewProjectDao pDao = new NewProjectDao();
 													ArrayList<String> pList = pDao.projectList();
@@ -169,7 +169,7 @@
 				data : {
 
 					taskName : $("#taskName").val(),
-					projectName: $("#projectName").val(),
+					projectId: $("#projectId").val(),
 					userName : $("#userName").val().join(","),
 					endDate : $("#endDate").val(),
 				},

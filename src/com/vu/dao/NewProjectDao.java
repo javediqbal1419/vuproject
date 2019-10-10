@@ -85,7 +85,7 @@ public class NewProjectDao {
 
 	public String newTask(LoginBean loginbean) {
 		String taskName = loginbean.getTask();
-		String projectId = loginbean.getProjectName();
+		String projectId = loginbean.getProjectId();
 		String userId = loginbean.getName();
 		String endDate = loginbean.getEndDate();
 

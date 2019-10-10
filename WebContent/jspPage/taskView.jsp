@@ -1,7 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	import="com.vu.dao.NewProjectDao" 
-	import="java.util.*"
+	import="com.vu.dao.NewProjectDao" import="java.util.*"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -124,131 +123,55 @@
 		</div>
 
 		<!-- Main content -->
-		<main class="main"> <!-- Breadcrumb -->
-		<ol class="breadcrumb">
+		<main class="main">
+			<!-- Breadcrumb -->
+			<ol class="breadcrumb">
 
-			<li class="breadcrumb-item">Home</li>
-			<li class="breadcrumb-item">Projects</li>
-			<li class="breadcrumb-item active">Views</li>
-		</ol>
+				<li class="breadcrumb-item">Home</li>
+				<li class="breadcrumb-item">Projects</li>
+				<li class="breadcrumb-item active">Views</li>
+			</ol>
 
-		<div class="col-md-12">
-			<div class="card">
-				<div class="card-header">
-					<strong>22 Active Task | 20 Inactive Task</strong>
-				</div>
-				<div class="card-body">
-					<div class="row">
-
-						<div class="col-12 col-md-6 col-lg-4">
-							<div class="card mx-2">
-								<div class="card-body">
-									<div class="h4 m-0">
-									
-									
-									<c:forEach items="${tList}" var="task" varStatus="countST">
-													<option value="${task.id}"><c:out value="${task.name}"></c:out></option>
-												</c:forEach>
-									
-
-
-										<p class="text-right lead text-danger">Task Status</p>
-
-									</div>
-									<div>
-									
-									Projects
-										
-									</div>
-									<p class="text-muted mb-0 text-right">22.0%</p>
-									<div class="progress progress-xs mb-3">
-
-										<div class="progress-bar bg-danger role="
-											progressbar" style="width: 22.0%" aria-valuenow="25"
-											aria-valuemin="0" aria-valuemax="100"></div>
-
-									</div>
-									<small class="text-muted"> User Name at here </small>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-12 col-md-6 col-lg-4">
-							<div class="card mx-2">
-								<div class="card-body">
-									<div class="h4 m-0">
-										Task Name
-
-										<p class="text-right lead text-success">Working</p>
-
-									</div>
-									<div>aaa</div>
-									<p class="text-muted mb-0 text-right">5.0%</p>
-									<div class="progress progress-xs mb-3">
-
-										<div class="progress-bar bg-danger role="
-											progressbar" style="width: 5.0%" aria-valuenow="25"
-											aria-valuemin="0" aria-valuemax="100"></div>
-
-									</div>
-									<small class="text-muted">tester</small>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-12 col-md-6 col-lg-4">
-							<div class="card mx-2">
-								<div class="card-body">
-									<div class="h4 m-0">
-										April 18, 2018
-
-										<p class="text-right lead text-info">Done</p>
-
-									</div>
-									<div>ERP Implementation</div>
-									<p class="text-muted mb-0 text-right">100.0%</p>
-									<div class="progress progress-xs mb-3">
-
-										<div class="progress-bar bg-success role="
-											progressbar" style="width: 100.0%" aria-valuenow="25"
-											aria-valuemin="0" aria-valuemax="100"></div>
-
-									</div>
-									<small class="text-muted">Description for ERP
-										Implementation Project. Fusce interd...</small>
-								</div>
-							</div>
-						</div>
-
-
-						<div class="col-12 col-md-6 col-lg-4">
-							<div class="card mx-2">
-								<div class="card-body">
-									<div class="h4 m-0">
-										Sept. 12, 2019
-
-										<p class="text-right lead text-success">Working</p>
-
-									</div>
-									<div>TEST PROJECT</div>
-									<p class="text-muted mb-0 text-right">50.0%</p>
-									<div class="progress progress-xs mb-3">
-
-										<div class="progress-bar bg-warning role="
-											progressbar" style="width: 50.0%" aria-valuenow="25"
-											aria-valuemin="0" aria-valuemax="100"></div>
-
-									</div>
-									<small class="text-muted">EQWFQF</small>
-								</div>
-							</div>
-						</div>
-
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<strong>22 Active Task | 20 Inactive Task</strong>
 					</div>
-					<br>
+					<div class="card-body">
+						<div class="row">
+
+							<c:forEach items="${taskList}" var="task" varStatus="countST">
+
+								<div class="col-12 col-md-6 col-lg-4">
+									<div class="card mx-2">
+										<div class="card-body">
+											<div class="h4 m-0">
+
+												${task.taskName }
+
+
+												<p class="text-right lead text-danger">${task.status }</p>
+
+											</div>
+											<div>${task.projectName }</div>
+											<p class="text-muted mb-0 text-right">22.0%</p>
+											<div class="progress progress-xs mb-3">
+
+												<div class="progress-bar bg-danger role="
+													progressbar" style="width: 22.0%" aria-valuenow="25"
+													aria-valuemin="0" aria-valuemax="100"></div>
+
+											</div>
+											<small class="text-muted"> ${task.name } </small>
+										</div>
+									</div>
+								</div>
+							</c:forEach>
+						</div>
+						<br>
+					</div>
 				</div>
 			</div>
-		</div>
 
 		</main>
 	</div>
