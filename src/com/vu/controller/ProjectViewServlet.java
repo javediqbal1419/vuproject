@@ -9,26 +9,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.vu.bo.Task;
+import com.vu.bo.Project;
 import com.vu.dao.NewProjectDao;
 
-@WebServlet("/TaskViewServlet")
-public class TaskViewServlet extends HttpServlet {
+@WebServlet("/ProjectViewServlet")
+public class ProjectViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
-	public TaskViewServlet() {
+	
+	public ProjectViewServlet() {
 		super();
-
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		NewProjectDao dao = new NewProjectDao();
-		ArrayList<Task> taskList = dao.taskList();
-		request.setAttribute("taskList", taskList);
-		request.getRequestDispatcher("jspPage/taskView.jsp").forward(request, response);
-
+		NewProjectDao pdao = new NewProjectDao();
+		ArrayList<Project> projectview = pdao.projectview();
+		request.setAttribute("projectview", projectview);
+		request.getRequestDispatcher("jspPage/projectView.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

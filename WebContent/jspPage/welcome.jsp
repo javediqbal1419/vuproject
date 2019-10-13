@@ -60,16 +60,16 @@
             <a class="nav-link" href="/"><i class="fa fa-home"></i> Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/dashboard/"><i class="fa fa-tachometer-alt"></i> Dashboard</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/jspPage/dashBoard.jsp"><i class="fa fa-tachometer-alt"></i> Dashboard</a>
           </li>
           <li class="nav-item nav-dropdown">
-            <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-tachometer-alt"></i> Views</a>
+            <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-address-card"></i> Views</a>
             <ul class="nav-dropdown-items">
               <li class="nav-item">
-                <a class="nav-link" href="/projects/"><i class="fa fa-paper-plane ml-2"></i> Project's View</a>
+                <a class="nav-link" href="<%=request.getContextPath()%>/ProjectViewServlet"><i class="fa fa-paper-plane ml-2"></i> Project's View</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/register/users/"><i class="fa fa-user ml-2"></i> User`s Views</a>
+                <a class="nav-link" href="<%=request.getContextPath()%>/UserViewServlet"><i class="fa fa-user ml-2"></i> User`s Views</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="<%=request.getContextPath()%>/TaskViewServlet"><i class="fa fa-tasks fa_custom fa-2x"></i> Task`s Views</a>
@@ -121,11 +121,6 @@
     <!-- Main content -->
     <main class="main">
       <!-- Breadcrumb -->
- 
-
-
-
-
     </main>
 
     <aside class="aside-menu">

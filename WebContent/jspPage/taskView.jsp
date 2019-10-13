@@ -154,7 +154,12 @@
 
 											</div>
 											<div>${task.projectName }</div>
-											<p class="text-muted mb-0 text-right">22.0%</p>
+											<p class="text-muted mb-0 text-right">
+											
+											
+											
+											
+											22.0%</p>
 											<div class="progress progress-xs mb-3">
 
 												<div class="progress-bar bg-danger role="

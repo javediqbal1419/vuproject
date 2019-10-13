@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.vu.bo.Project;
 import com.vu.bo.User;
 import com.vu.dao.NewProjectDao;
 import com.vu.java.LoginBean;
@@ -22,8 +23,13 @@ public class NewTaskServlet extends HttpServlet {
 		
 		NewProjectDao dao = new NewProjectDao();
 		ArrayList<User> userList = dao.userList();
+		ArrayList <Project> projectList = dao.projectList();
 		
 		request.setAttribute("userList", userList);
+		request.setAttribute("projectList", projectList);
+//		NewProjectDao pdao = new NewProjectDao();
+//		ArrayList <Project> projectList = dao.projectList();
+//		request.setAttribute("projectList", projectList);
 		
 		request.getRequestDispatcher("jspPage/newTask.jsp").forward(request, response);
 	}
@@ -31,12 +37,14 @@ public class NewTaskServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String taskName = request.getParameter("taskName");
+		String projectId = request.getParameter("projectId");
 		String projectName = request.getParameter("projectName");
 		String userName = request.getParameter("userName");
 		String endDate = request.getParameter("endDate");
 
 		LoginBean loginBean = new LoginBean();
 		loginBean.setTask(taskName);
+		loginBean.setProjectId(projectId);
 		loginBean.setProjectName(projectName);
 		loginBean.setName(userName);
 		loginBean.setEndDate(endDate);

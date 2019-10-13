@@ -1,3 +1,7 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	import="com.vu.dao.NewProjectDao" import="java.util.*"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -116,123 +120,96 @@
 		</div>
 
 		<!-- Main content -->
-		<main class="main"> <!-- Breadcrumb -->
-		<ol class="breadcrumb">
+		<main class="main">
+			<!-- Breadcrumb -->
+			<ol class="breadcrumb">
 
-			<li class="breadcrumb-item">Home</li>
-			<li class="breadcrumb-item">Projects</li>
-			<li class="breadcrumb-item active">Views</li>
-		</ol>
+				<li class="breadcrumb-item">Home</li>
+				<li class="breadcrumb-item">Projects</li>
+				<li class="breadcrumb-item active">Views</li>
+			</ol>
 
-		<div class="container-fluid">
-			<div class="animated fade-in">
-				<div class="row">
-					<table
-						class="table table-responsive-sm table-hover table-outline mb-5 ">
-						<thead class="thead-light">
-							<tr>
-								<th class="text-center"><i class="fa fa-user"></i></th>
-								<th>User</th>
-								<th class="text-center">Assigned Projects</th>
-								<th>Tasks</th>
-								<th class="text-center">Assigned Tasks</th>
-								<th>Activity</th>
-							</tr>
-						</thead>
-						<tbody>
-							<!-- user1 -->
-
-
+			<div class="container-fluid">
+				<div class="animated fade-in">
+					<div class="row">
+						<table
+							class="table table-responsive-sm table-hover table-outline mb-5 ">
+							<thead class="thead-light">
+								<tr>
+									<th class="text-center"><i class="fa fa-user"></i></th>
+									<th>User</th>
+									<th class="text-center">Assigned Projects</th>
+									<th>Project Progress</th>
+									<th class="text-center">Assigned Tasks</th>
+									<th>Task Progress</th>
+								</tr>
+							</thead>
+							<tbody>
 
 
 
-							<tr>
-								<td class="text-center">
-									<div class="avatar">
-										<img
-											src="https://gui-projects.s3.amazonaws.com/static/core/avatar/blank_profile.png"
-											class="img-avatar" alt=""> <span
-											class="avatar-status badge-success"></span>
-									</div>
-								</td>
-								<td>
-
-									<div>javed</div>
-
-									<div class="small text-muted">
-										<span>Joined:</span> | April 1, 2018, 1:53 p.m.
-									</div>
-								</td>
-								<td class="text-center"><span
-									class="badge badge-pill badge-dark">3</span></td>
-								<td>
-									<div class="clearfix">
-										<div class="float-left">
-											<strong>24%</strong>
-										</div>
-										<div class="float-right">
-											<small class="text-muted">of total tasks</small>
-										</div>
-									</div>
-									<div class="progress progress-xs">
-										<div class="progress-bar bg-warning" role="progressbar"
-											style="width: 24%" aria-valuenow="74" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-								</td>
-								<td class="text-center"><span
-									class="badge badge-pill badge-dark">10</span> <span
-									class="badge badge-pill badge-dark"></span></td>
-								<td>
-									<div class="small text-muted">Last login</div> <strong>April
-										8, 2018, 8:16 p.m.</strong>
-								</td>
-							</tr>
+								<!-- user1 -->
+								<c:forEach items="${userview}" var="user" varStatus="countST">
+									<tr>
+										<td class="text-center">
 
 
+											<div class="avatar">
+												<img
+													src="https://gui-projects.s3.amazonaws.com/static/core/avatar/blank_profile.png"
+													class="img-avatar" alt=""> <span
+													class="avatar-status badge-success"></span>
+											</div>
+										</td>
+										<td>
 
-							<tr>
-								<td class="text-center">
-									<div class="avatar">
-										<img
-											src="https://gui-projects.s3.amazonaws.com/static/core/avatar/blank_profile.png"
-											class="img-avatar" alt=""> <span
-											class="avatar-status badge-success"></span>
-									</div>
-								</td>
-								<td>
 
-									<div>asd asd</div>
+											<div>${user.name }</div>
 
-									<div class="small text-muted">
-										<span>Joined:</span> | Sept. 13, 2019, 9:31 a.m.
-									</div>
-								</td>
-								<td class="text-center"><span
-									class="badge badge-pill badge-dark">0</span></td>
-								<td>
-									<div class="clearfix">
-										<div class="float-left">
-											<strong>0%</strong>
-										</div>
-										<div class="float-right">
-											<small class="text-muted">of total tasks</small>
-										</div>
-									</div>
-									<div class="progress progress-xs">
-										<div class="progress-bar bg-warning" role="progressbar"
-											style="width: 0%" aria-valuenow="74" aria-valuemin="0"
-											aria-valuemax="100"></div>
-									</div>
-								</td>
-								<td class="text-center"><span
-									class="badge badge-pill badge-dark">0</span> <span
-									class="badge badge-pill badge-dark"></span></td>
-								<td>
-									<div class="small text-muted">Last login</div> <strong>Sept.
-										13, 2019, 9:31 a.m.</strong>
-								</td>
-							</tr>
+											<div class="small text-muted">
+												<span>Joined:</span> | ${user.u_currentDate}
+											</div>
+										</td>
+										<td class="text-center"><span
+											class="badge badge-pill badge-dark">${user.proCount}</span></td>
+										<td>
+											<div class="clearfix">
+												<div class="float-left">
+													<strong>50%</strong>
+												</div>
+												<div class="float-right">
+													<small class="text-muted">of Total Projects</small>
+												</div>
+											</div>
+											<div class="progress progress-xs">
+												<div class="progress-bar bg-warning" role="progressbar"
+													style="width: 50%" aria-valuenow="74" aria-valuemin="0"
+													aria-valuemax="100"></div>
+											</div>
+										</td>
+										<td class="text-center"><span
+											class="badge badge-pill badge-dark">${user.taskCount}</span> <span
+											class="badge badge-pill badge-dark"></span></td>
+										<td>
+
+											<div class="clearfix">
+												<div class="float-left">
+													<strong>70%</strong>
+												</div>
+												<div class="float-right">
+													<small class="text-muted">of Total Tasks</small>
+												</div>
+											</div>
+											<div class="progress progress-xs">
+												<div class="progress-bar bg-warning" role="progressbar"
+													style="width: 70%" aria-valuenow="74" aria-valuemin="0"
+													aria-valuemax="100"></div>
+											</div>
+										</td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
 		</main>
 	</div>
 
@@ -259,7 +236,6 @@
 	<!-- Custom scripts required by this view -->
 	<script
 		src="https://gui-projects.s3.amazonaws.com/static/core/js/main.js"></script>
-
 </body>
 
 </html>

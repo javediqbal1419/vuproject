@@ -6,7 +6,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+	integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+	crossorigin="anonymous"></script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -55,14 +58,15 @@
 
 
 							<div class="form-group">
-							<label class="col-form-label">Project Name</label>
+								<label class="col-form-label">Project Name</label>
 								<div class="input-group">
 									<div class="input-group-append">
 										<span class="input-group-text"><i class="fa fa-user"></i></span>
 									</div>
 
-									<input type="text" name="projectName" id="projectName" maxlength="80"
-										class="form-control" placeholder="Project Name" required/>
+									<input type="text" name="projectName" id="projectName"
+										maxlength="80" class="form-control" placeholder="Project Name"
+										required />
 
 								</div>
 							</div>
@@ -75,17 +79,18 @@
 									</div>
 									<select id="userName" name="userName" class="form-control"
 										multiple="multiple">
-										
+
 										<c:forEach items="${userList}" var="user" varStatus="countST">
-											<option value="${user.id}"><c:out value="${user.name}"></c:out></option>
+											<option value="${user.id}"><c:out
+													value="${user.name}"></c:out></option>
 										</c:forEach>
-										
+
 									</select>
 
 								</div>
 							</div>
 							<div class="form-group">
-							<label class="col-form-label">Total Hours</label>
+								<label class="col-form-label">Total Hours</label>
 								<div class="input-group">
 									<div class="input-group-append">
 										<span class="input-group-text"><i
@@ -122,6 +127,7 @@
 									<input type="date" name="startDate" id="startDate"
 										class="form-control" placeholder="Enter Start Date" />
 								</div>
+								
 
 
 							</div>
@@ -195,7 +201,8 @@
 
 		}
 		function updateSuccess() {
-			window.location.replace("<%=request.getContextPath()%>/welcome.jsp");
+			window.location.replace("<%=request.getContextPath()%>
+		/welcome.jsp");
 
 		}
 	</script>
