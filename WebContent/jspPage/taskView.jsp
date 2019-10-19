@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<jsp:include page="home.jsp"/>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -40,88 +41,9 @@
 <body
 	class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
 
-	<header class="app-header navbar">
-
-		<img src="" alt="" class="brand-gui ml-2 d-none d-sm-block p-2">
-		<button class="navbar-toggler sidebar-toggler d-md-down-none"
-			type="button">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-
-
-		<ul class="nav navbar-nav ml-auto">
-
-
-			<li class="nav-item dropdown"><a class="nav-link"
-				data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
-				aria-expanded="false"> <img
-					src="https://gui-projects.s3.amazonaws.com/static/core/img/avatar/blank_profile.png"
-					class="img-avatar" alt="AnonymousUser">
-
-			</a></li>
-		</ul>
-
-	</header>
 
 	<div class="app-body">
-		<div class="sidebar">
-			<nav class="sidebar-nav">
-				<ul class="nav">
-					<li class="nav-item"><a class="nav-link" href="/"><i
-							class="fa fa-home"></i> Home</a></li>
-					<li class="nav-item"><a class="nav-link" href="/dashboard/"><i
-							class="fa fa-tachometer-alt"></i> Dashboard</a></li>
-					<li class="nav-item nav-dropdown"><a
-						class="nav-link nav-dropdown-toggle" href="#"><i
-							class="fa fa-tachometer-alt"></i> Views</a>
-						<ul class="nav-dropdown-items">
-							<li class="nav-item"><a class="nav-link" href="/projects/"><i
-									class="fa fa-paper-plane ml-2"></i> Project's View</a></li>
-							<li class="nav-item"><a class="nav-link"
-								href="/vuproject/taskView.jsp/"><i class="fa fa-user ml-2"></i>
-									Users Views</a></li>
-							<li class="nav-item"><a class="nav-link"
-								href="/vuproject/jspPage/taskView.jsp"><i
-									class="fa fa-user ml-2"></i> Task`s Views</a></li>
-						</ul></li>
-
-					<!--<li class="nav-title">-->
-					<!--Theme-->
-					<!--</li>-->
-					<!--<li class="nav-item">-->
-					<!--<a href="colors.html" class="nav-link"><i class="fa fa-tint"></i> Colors</a>-->
-					<!--</li>-->
-					<!--<li class="nav-item">-->
-					<!--<a href="typography.html" class="nav-link"><i class="fa fa-user"></i> Typograhy</a>-->
-					<!--</li>-->
-					<li class="nav-title">Register</li>
-					<li class="nav-item nav-dropdown"><a
-						class="nav-link nav-dropdown-toggle" href="#"><i
-							class="fa fa-puzzle-piece"></i> Projects</a>
-						<ul class="nav-dropdown-items">
-							<li class="nav-item"><a class="nav-link"
-								href="/projects/new-project/"><i class="fa fa-plus ml-2"></i>
-									New Project</a></li>
-							<li class="nav-item"><a class="nav-link"
-								href="/projects/new-task/"><i class="fa fa-plus ml-2"></i>
-									New Task</a></li>
-						</ul></li>
-					<li class="nav-item nav-dropdown"><a
-						class="nav-link nav-dropdown-toggle" href="#"><i
-							class="fa fa-user"></i> Users</a>
-						<ul class="nav-dropdown-items">
-							<li class="nav-item"><a class="nav-link"
-								href="/register/new-user/"><i class="fa fa-user-plus ml-2"></i>
-									Create New User</a></li>
-
-						</ul></li>
-					<li class="divider"></li>
-
-				</ul>
-			</nav>
-			<button class="sidebar-minimizer brand-minimizer" type="button"></button>
-		</div>
-
+		
 		<!-- Main content -->
 		<main class="main">
 			<!-- Breadcrumb -->
@@ -135,7 +57,13 @@
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-header">
-						<strong>22 Active Task | 20 Inactive Task</strong>
+
+
+
+						<strong> ${taskstatus}Pending Task | Active Task |
+							Complete Task</strong>
+
+
 					</div>
 					<div class="card-body">
 						<div class="row">
@@ -150,16 +78,15 @@
 												${task.taskName }
 
 
-												<p class="text-right lead text-danger">${task.status }</p>
 
+												<p class="text-right lead text-danger">
+													
+														${task.status }
+												</p>
+											
 											</div>
 											<div>${task.projectName }</div>
-											<p class="text-muted mb-0 text-right">
-											
-											
-											
-											
-											22.0%</p>
+											<p class="text-muted mb-0 text-right">22.0%</p>
 											<div class="progress progress-xs mb-3">
 
 												<div class="progress-bar bg-danger role="
@@ -180,11 +107,6 @@
 
 		</main>
 	</div>
-
-	<footer class="app-footer">
-		<span><a href="https://javediqbal1419.netlify.com">
-				Copyright </a> © 2019 | Project Manager (PMAN) Developed by Javed.</span>
-	</footer>
 
 	<!-- Bootstrap and necessary plugins -->
 	<script

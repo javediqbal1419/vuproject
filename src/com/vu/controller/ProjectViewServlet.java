@@ -25,7 +25,10 @@ public class ProjectViewServlet extends HttpServlet {
 
 		NewProjectDao pdao = new NewProjectDao();
 		ArrayList<Project> projectview = pdao.projectview();
+
+		int projectCount = pdao.p_count();
 		request.setAttribute("projectview", projectview);
+		request.setAttribute("projectCount", projectCount);
 		request.getRequestDispatcher("jspPage/projectView.jsp").forward(request, response);
 	}
 

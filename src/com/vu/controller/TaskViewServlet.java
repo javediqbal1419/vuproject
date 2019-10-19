@@ -26,6 +26,8 @@ public class TaskViewServlet extends HttpServlet {
 
 		NewProjectDao dao = new NewProjectDao();
 		ArrayList<Task> taskList = dao.taskList();
+		ArrayList<Integer> taskstatus = dao.taskStatus();
+		request.setAttribute("taskstatus", taskstatus);
 		request.setAttribute("taskList", taskList);
 		request.getRequestDispatcher("jspPage/taskView.jsp").forward(request, response);
 

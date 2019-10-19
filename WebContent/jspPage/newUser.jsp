@@ -1,5 +1,11 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	import="com.vu.dao.NewProjectDao" import="java.util.*"
+	import="com.vu.bo.User" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -35,14 +41,7 @@
 
 <body
 	class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
-
-
-
 	<div class="app-body">
-
-
-
-
 		<div class="container animated fadeIn">
 			<div class="row justify-content-center">
 				<div class="col-6">
@@ -50,8 +49,7 @@
 						<div class="card p-4 mb-5">
 							<div class="card-body">
 
-								<input type='hidden' name=''
-									value='3' />
+								<input type='hidden' name='' value='3' />
 								<h1>Users</h1>
 								<p class="text-muted">Create users here</p>
 								<form action="signup" method="post">
@@ -64,29 +62,24 @@
 											<div class="input-group-append">
 												<span class="input-group-text"><i class="fa fa-user"></i></span>
 											</div>
-
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="input-group">
 											<input type="text" name="firstName" maxlength="30"
-												class="form-control" placeholder="First name"
-												id="firstName" />
+												class="form-control" placeholder="First name" id="firstName" />
 											<div class="input-group-append">
 												<span class="input-group-text"><i class="fa fa-user"></i></span>
 											</div>
-
 										</div>
 									</div>
 									<div class="form-group">
 										<div class="input-group">
 											<input type="text" name="lastName" maxlength="150"
-												class="form-control" placeholder="Last name"
-												id="lastName" />
+												class="form-control" placeholder="Last name" id="lastName" />
 											<div class="input-group-append">
 												<span class="input-group-text"><i class="fa fa-user"></i></span>
 											</div>
-
 										</div>
 									</div>
 									<div class="form-group">
@@ -97,7 +90,6 @@
 												<span class="input-group-text"><i
 													class="fa fa-envelope"></i></span>
 											</div>
-
 										</div>
 									</div>
 									<div class="form-group">
@@ -107,7 +99,6 @@
 											<div class="input-group-append">
 												<span class="input-group-text"><i class="fa fa-key"></i></span>
 											</div>
-
 										</div>
 									</div>
 									<div class="form-group">
@@ -117,56 +108,41 @@
 											<div class="input-group-append">
 												<span class="input-group-text"><i class="fa fa-key"></i></span>
 											</div>
-
 										</div>
-
 									</div>
-									<script type="text/javascript">
-										function matchpass() {
-											var x = document
-													.getElementById("pass1").value;
-											var y = document
-													.getElementById("pass2").value;
-
-											if (x != y) {
-												alert("password not match");
-											}
-										}
-									</script>
-									
 									<div class="form-group">
+										<label class="col-form-label">Project Role</label>
 										<div class="input-group">
-											<input type="number" min="1" max = "5" name="role" id="role"
-												class="form-control" placeholder = "Project Role" required />
+											<select id="userRole" name="userRole" class="form-control">
+												<c:forEach items="${userRole}" var="role"
+													varStatus="countST">
+													<option value="${role.roleId}"><c:out
+															value="${role.role}"></c:out></option>
+												</c:forEach>
+											</select>
 											<div class="input-group-append">
-												<span class="input-group-text"><i class="fa fa-user"></i></span>
+												<span class="input-group-text"><i
+													class="fa fa-puzzle-piece"></i></span>
 											</div>
-
 										</div>
-
 									</div>
 									<div>
-										<button type="submit" class="btn btn-sm btn-success" 
-										onclick = "matchpass()">
+										<button type="submit" class="btn btn-sm btn-success"
+											onclick="updateUser()">
 											<i class="fa fa-dot-circle-o"></i> Submit
-
 										</button>
 										<button type="reset" class="btn btn-sm btn-danger">
 											<i class="fa fa-ban"></i> Reset
 										</button>
 									</div>
 								</form>
-
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
-
 		</main>
-
 		<aside class="aside-menu">
 			<ul class="nav nav-tabs" role="tablist">
 				<li class="nav-item"><a class="nav-link active"
@@ -181,10 +157,44 @@
 		</aside>
 
 	</div>
-
-
-	
-
 </body>
-
 </html>
+<script>
+		function updateUser() {
+		
+		$.ajax({
+		type: "POST",
+		url: "<%=request.getContextPath()%>/LoginServlet/signup",
+				data : {
+
+					user : $("#user").val(),
+					firstName : $("#firstName").val(),
+					lastName: $("#lastName").val(),
+					email: $("#email").val(),
+					pass1 : $("#pass1").val(),
+					userRole : $("#userRole").val(),
+				},
+				dataType : "json",
+				success : updateSuccess(),
+				error : function() {
+
+				}
+			});
+
+		}
+		function updateSuccess() {
+			window.location.replace("<%=request.getContextPath()%>/jspPage/welcome.jsp");
+
+	}
+</script>
+<script type="text/javascript">
+	function matchpass() {
+		var x = document.getElementById("pass1").value;
+		var y = document.getElementById("pass2").value;
+
+		if (x != y) {
+			alert("password not match");
+		}
+	}
+</script>
+function myFunction(){ matchpass(); updateUser(); }

@@ -17,14 +17,15 @@ public class NewProjectDao {
 
 	}
 
-	public String addProject(LoginBean loginbean) {
+	public String addProject(String projectName, String userName, String hours, String startDate, String endDate,
+			String desp) {
 
-		String projectName = loginbean.getProjectName();
-		String userName = loginbean.getName();
-		String hours = loginbean.getHours();
-		String startDate = loginbean.getStartDate();
-		String endDate = loginbean.getEndDate();
-		String desp = loginbean.getDesp();
+//		String projectName = loginbean.getProjectName();
+//		String userName = loginbean.getName();
+//		String hours = loginbean.getHours();
+//		String startDate = loginbean.getStartDate();
+//		String endDate = loginbean.getEndDate();
+//		String desp = loginbean.getDesp();
 
 		String insertQuery = "INSERT INTO projects (projectName, projectUsers, startDate, endDate,p_status, totalHours, description) VALUES (?, ?, ?, ?, ?, ?,? )";
 
@@ -37,18 +38,23 @@ public class NewProjectDao {
 			statement = con.createStatement();
 			insert = con.prepareStatement(insertQuery);
 
-			insert.setString(1, projectName);
-			insert.setString(2, userName);
-			insert.setString(3, startDate);
-			insert.setString(4, endDate);
-			insert.setString(5, "2");
-			insert.setString(6, hours);
-			insert.setString(7, desp);
-			int i = insert.executeUpdate();
+			String[] userList = userName.split(",");
+			for (int i = 0; i < userList.length; i++) {
 
-			if (i != 0)
-				return "SUCCESS";
+				insert.setString(1, projectName);
+				insert.setString(2, userList[i]);
+				insert.setString(3, startDate);
+				insert.setString(4, endDate);
+				insert.setString(5, "2");
+				insert.setString(6, hours);
+				insert.setString(7, desp);
+				insert.addBatch();
 
+			}
+			insert.executeBatch();
+//			if (j != 0)
+//				return "SUCCESS";
+//
 			con.close();
 
 		} catch (Exception e) {
@@ -195,7 +201,7 @@ public class NewProjectDao {
 				ps.setProjectName(resultSet.getString("projectName"));
 				ps.setP_status(resultSet.getString("p_status"));
 				projectShow.add(ps);
-				
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -227,5 +233,98 @@ public class NewProjectDao {
 			e.printStackTrace();
 		}
 		return userShow;
+	}
+
+//	public ArrayList<Project> count() {
+//		ArrayList<Project> totalCount = new ArrayList<Project>();
+//		StringBuilder query = new StringBuilder(
+//				"SELECT COUNT(*) AS proCount FROM projects p WHERE p.`p_status` = 2;");
+//		Connection con = null;
+//		Statement statement = null;
+//		ResultSet resultSet = null;
+//		try {
+//			con = DBConnection.createConection();
+//			statement = con.createStatement();
+//			resultSet = statement.executeQuery(query.toString());
+//			while (resultSet.next()) {
+//				Project tc = new Project();
+//				tc.setProCount(resultSet.getInt("proCount"));
+//				totalCount.add(tc);
+//				
+//			}
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		return totalCount;
+//}
+	public int p_count() {
+		int proCount = 0;
+		StringBuilder query = new StringBuilder("SELECT COUNT(*) AS proCount FROM projects p WHERE p.`p_status` = 2;");
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = DBConnection.createConection();
+			statement = con.createStatement();
+			resultSet = statement.executeQuery(query.toString());
+			while (resultSet.next()) {
+
+				proCount = resultSet.getInt("proCount");
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return proCount;
+	}
+
+	public int t_count() {
+		int tACount = 0;
+		StringBuilder query = new StringBuilder(
+				"SELECT COUNT(*) AS taskCount FROM tasks t WHERE t.`task_status_id` = 2;");
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = DBConnection.createConection();
+			statement = con.createStatement();
+			resultSet = statement.executeQuery(query.toString());
+			while (resultSet.next()) {
+
+				tACount = resultSet.getInt("taskCount");
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return tACount;
+	}
+
+	public ArrayList<Integer> taskStatus() {
+		ArrayList<Integer> t_status = new ArrayList<Integer>();
+//		int tc = (Integer) null;
+		StringBuilder query = new StringBuilder(
+				"SELECT COUNT(IF (t.`task_status_id` = '1', 1, NULL)) AS pending, COUNT(IF (t.`task_status_id` = '2', 1, NULL)) AS working, COUNT(IF (t.`task_status_id` = '3', 1, NULL)) AS complete FROM Tasks t; ");
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = DBConnection.createConection();
+			statement = con.createStatement();
+			resultSet = statement.executeQuery(query.toString());
+			while (resultSet.next()) {
+	
+				int tc1 = resultSet.getInt("pending");
+				int tc2 = resultSet.getInt("working");
+				int tc3 = resultSet.getInt("complete");
+				t_status.add(tc1);
+				t_status.add(tc2);
+				t_status.add(tc3);
+				System.out.println("Task count"+t_status);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return t_status;
 	}
 }

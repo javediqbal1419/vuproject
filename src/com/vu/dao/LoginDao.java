@@ -4,8 +4,10 @@ import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import com.mysql.jdbc.PreparedStatement;
+import com.vu.bo.User;
 import com.vu.java.LoginBean;
 import com.vu.util.DBConnection;
 
@@ -89,4 +91,29 @@ public class LoginDao {
 		return "Invalid email";
 
 	}
+	public ArrayList <User> userRole(){
+		
+		ArrayList <User> user_role = new ArrayList<User>();
+		
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+
+		try {
+			con = DBConnection.createConection();
+			statement = con.createStatement();
+			resultSet = statement.executeQuery("SELECT * FROM role;");
+			while (resultSet.next()) {
+				User userrole = new User();
+				userrole.setRoleId(resultSet.getInt("id"));
+				userrole.setRole(resultSet.getString("role"));
+				user_role.add(userrole);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		
+	}
+		return user_role;
+}
 }

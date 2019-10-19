@@ -29,7 +29,9 @@ public class NewProjectServlet extends HttpServlet {
 		NewProjectDao dao = new NewProjectDao();
 		ArrayList<User> userList = dao.userList();
 		
+		
 		request.setAttribute("userList", userList);
+		
 		
 		request.getRequestDispatcher("jspPage/newProject.jsp").forward(request, response);
 	}
@@ -39,26 +41,12 @@ public class NewProjectServlet extends HttpServlet {
 
 		String projectName = request.getParameter("projectName");
 		String userName = request.getParameter("userName");
-		String totalHours = request.getParameter("hours");
+		String hours = request.getParameter("hours");
 		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
 		String desp = request.getParameter("desp");
 
-		LoginBean loginBean = new LoginBean();
-		loginBean.setProjectName(projectName);
-		loginBean.setName(userName);
-		loginBean.setHours(totalHours);
-		loginBean.setEndDate(endDate);
-		loginBean.setStartDate(startDate);
-		loginBean.setDesp(desp);
-
 		NewProjectDao addProjectDao = new NewProjectDao();
-		String addProject = addProjectDao.addProject(loginBean);
-
-		if (addProject.equals("SUCCESS")) {
-
-		} else {
-			System.out.println("Project not enter");
-		}
+		String addProject = addProjectDao.addProject(projectName, userName, hours, startDate, endDate,  desp);
 	}
 }

@@ -27,9 +27,6 @@ public class NewTaskServlet extends HttpServlet {
 		
 		request.setAttribute("userList", userList);
 		request.setAttribute("projectList", projectList);
-//		NewProjectDao pdao = new NewProjectDao();
-//		ArrayList <Project> projectList = dao.projectList();
-//		request.setAttribute("projectList", projectList);
 		
 		request.getRequestDispatcher("jspPage/newTask.jsp").forward(request, response);
 	}

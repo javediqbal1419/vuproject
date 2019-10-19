@@ -1,10 +1,12 @@
 eclipse.preferences.version=1
 encoding//WebContent/jspPage/costView.jsp=UTF-8
+encoding//WebContent/jspPage/home.jsp=UTF-8
 encoding//WebContent/jspPage/newProject.jsp=UTF-8
 encoding//WebContent/jspPage/newTask.jsp=UTF-8
 encoding//WebContent/jspPage/newUser.jsp=UTF-8
 encoding//WebContent/jspPage/projectView.jsp=UTF-8
 encoding//WebContent/jspPage/taskView.jsp=UTF-8
+encoding//WebContent/jspPage/updateTask.jsp=UTF-8
 encoding//WebContent/jspPage/userView.jsp=UTF-8
 encoding//WebContent/jspPage/welcome.jsp=UTF-8
 encoding//WebContent/login.jsp=UTF-8
