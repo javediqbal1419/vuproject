@@ -197,4 +197,6 @@
 		}
 	}
 </script>
+<<script type="text/javascript">
 function myFunction(){ matchpass(); updateUser(); }
+</script>

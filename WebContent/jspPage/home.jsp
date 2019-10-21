@@ -2,7 +2,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
-<link rel="stylesheet" href="E:/gitvu/vuproject/WebContent/myCSS/myStyle.css">
 <style>.footer{color:red !important;
 background: red;}</style>
   <meta charset="utf-8">
@@ -47,7 +46,7 @@ background: red;}</style>
         </a>
         <div class="dropdown-menu dropdown-menu-right">
           
-          <a class="dropdown-item" href="/login/"><i class="fa fa-user"></i> Logout</a>
+          <a class="dropdown-item" href="<%=request.getContextPath()%>/login.jsp"><i class="fa fa-user"></i> Logout</a>
           
         </div>
       </li>
@@ -60,7 +59,7 @@ background: red;}</style>
       <nav class="sidebar-nav">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="/"><i class="fa fa-home"></i> Home</a>
+            <a class="nav-link" href="<%=request.getContextPath()%>/jspPage/home.jsp""><i class="fa fa-home"></i> Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="<%=request.getContextPath()%>/jspPage/dashBoard.jsp"><i class="fa fa-tachometer-alt"></i> Dashboard</a>
@@ -78,18 +77,18 @@ background: red;}</style>
                 <a class="nav-link" href="<%=request.getContextPath()%>/TaskViewServlet"><i class="fa fa-tasks fa_custom fa-2x"></i> Task`s Views</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/register/users/"><i class="fa fa-user ml-2"></i> Cost`s Views</a>
+                <a class="nav-link" href="<%=request.getContextPath()%>/jspPage/costView.jsp"><i class="fa fa-user ml-2"></i> Cost`s Views</a>
               </li>
             </ul>
             
             <li class="nav-item nav-dropdown">
-            <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-address-card"></i> Update</a>
+            <a class="nav-link nav-dropdown-toggle" href=""><i class="fa fa-address-card"></i> Update</a>
             <ul class="nav-dropdown-items">
               <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/"><i class="fa fa-puzzle-piece"></i> Update Project</a>
+                <a class="nav-link" href="<%=request.getContextPath()%>/UpdateProjectServlet"><i class="fa fa-puzzle-piece"></i> Update Project</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/jspPage/updateTask.jsp	"><i class="fa fa-tasks fa_custom fa-2x"></i> Update Task</a>
+                <a class="nav-link" href="<%=request.getContextPath()%>/UpdateTaskServlet"><i class="fa fa-tasks fa_custom fa-2x"></i> Update Task</a>
               </li>
             </ul>
             

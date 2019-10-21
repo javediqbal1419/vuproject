@@ -107,22 +107,17 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label class="col-form-label">Status</label>
+									<label class="col-form-label">Start Date</label>
 									<div class="input-group">
 										<div class="input-group-append">
-											<span class="input-group-text"><i class="fa fa-circle"></i></span>
+											<span class="input-group-text"><i
+												class="fa fa-calendar-alt"></i></span>
 										</div>
-										<select name="status" class="form-control" placeholder="Email"
-											id="id_status">
-											<option value="1">Pending</option>
-
-											<option value="2">Working</option>
-
-											<option value="3">Complete</option>
-
-										</select>
-
+										<input type="date" id="startDate" name="startDate"
+											class="form-control" placeholder="Enter End Date" />
 									</div>
+
+
 								</div>
 								<div class="form-group">
 									<label class="col-form-label">End Date</label>
@@ -167,6 +162,7 @@
 					taskName : $("#taskName").val(),
 					projectName: $("#projectName").val(),
 					userName : $("#userName").val(),
+					startDate : $("#startDate").val(),
 					endDate : $("#endDate").val(),
 				},
 				dataType : "json",

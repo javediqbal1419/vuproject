@@ -37,6 +37,7 @@ public class NewTaskServlet extends HttpServlet {
 		String projectId = request.getParameter("projectId");
 		String projectName = request.getParameter("projectName");
 		String userName = request.getParameter("userName");
+		String startDate = request.getParameter("startDate");
 		String endDate = request.getParameter("endDate");
 
 		LoginBean loginBean = new LoginBean();
@@ -44,6 +45,7 @@ public class NewTaskServlet extends HttpServlet {
 		loginBean.setProjectId(projectId);
 		loginBean.setProjectName(projectName);
 		loginBean.setName(userName);
+		loginBean.setStartDate(startDate);
 		loginBean.setEndDate(endDate);
 
 		NewProjectDao newTaskDao = new NewProjectDao();

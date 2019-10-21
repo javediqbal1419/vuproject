@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	import="com.vu.dao.NewProjectDao" import="java.util.*"
+	import="com.vu.dao.UpdateDao" import="java.util.*"
 	pageEncoding="ISO-8859-1"%>
 
 
@@ -8,6 +8,7 @@
 <html lang="en">
 
 <head>
+<link rel="stylesheet" href="<%=request.getContextPath()%>/mycss/mcss.css" type="text/css">
 <jsp:include page="home.jsp" />
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,7 +21,7 @@
 	content="Bootstrap,Admin,Template,Open,Source,AngularJS,Angular,Angular2,Angular 2,Angular4,Angular 4,jQuery,CSS,HTML,RWD,Dashboard,React,React.js,Vue,Vue.js">
 <meta name="google-site-verification"
 	content="83fcqoPn-YTkXathQiicW-x3U2RWZh4PaPUzk91wtjY" />
-<title>Task View</title>
+<title>Update Task</title>
 
 <!-- Icons -->
 <link rel="stylesheet"
@@ -58,32 +59,33 @@
 
 			<div class="col-md-12">
 				<div class="card">
-					<div class="card-header">
-
-
-
-						<strong> ${taskstatus}Pending Task | Active Task |
-							Complete Task</strong>
-
-
-					</div>
 					<div class="card-body">
 						<div class="row">
 
-							<c:forEach items="${taskList}" var="task" varStatus="countST">
+							<c:forEach items="${uTaskList}" var="task" varStatus="countST">
 
 								<div class="col-12 col-md-6 col-lg-4">
 									<div class="card mx-2">
 										<div class="card-body">
-											<div class="h4 m-0">
 
-												${task.taskName }
+											<div class="smallbox" align="right">
 
+												<select>
 
-
-												<p class="text-right lead text-danger">${task.status }</p>
-
+													<option><p class="text-right lead text-danger">${task.status }</p>
+													</option>
+												</select>
 											</div>
+
+											<div class="h4 m-0">${task.taskName }</div>
+
+
+
+
+
+
+
+
 											<div>${task.projectName }</div>
 											<p class="text-muted mb-0 text-right">22.0%</p>
 											<div class="progress progress-xs mb-3">

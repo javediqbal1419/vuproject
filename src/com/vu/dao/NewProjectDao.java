@@ -94,9 +94,10 @@ public class NewProjectDao {
 		String taskName = loginbean.getTask();
 		String projectId = loginbean.getProjectName();
 		String userId = loginbean.getName();
+		String startDate = loginbean.getStartDate();
 		String endDate = loginbean.getEndDate();
 
-		String insertQuery = "INSERT INTO tasks (taskName, projectId,  endDate, userId,task_status_id) VALUES (?, ?, ?, ?, ? )";
+		String insertQuery = "INSERT INTO tasks (taskName, projectId, startDate,  endDate, userId,task_status_id) VALUES (?, ?, ?, ?, ?, ? )";
 
 		java.sql.PreparedStatement insert = null;
 		Connection con = null;
@@ -109,9 +110,10 @@ public class NewProjectDao {
 
 			insert.setString(1, taskName);
 			insert.setString(2, projectId);
-			insert.setString(3, endDate);
-			insert.setString(4, userId);
-			insert.setString(5, "1");
+			insert.setString(3, startDate);
+			insert.setString(4, endDate);
+			insert.setString(5, userId);
+			insert.setString(6, "1");
 			int i = insert.executeUpdate();
 
 			if (i != 0)
@@ -135,7 +137,7 @@ public class NewProjectDao {
 		try {
 			con = DBConnection.createConection();
 			statement = con.createStatement();
-			resultSet = statement.executeQuery("SELECT * FROM projects;");
+			resultSet = statement.executeQuery("SELECT * FROM projects p GROUP BY p.`projectName`;");
 			while (resultSet.next()) {
 				Project ps = new Project();
 				ps.setProjectId(resultSet.getInt("id"));
@@ -327,4 +329,5 @@ public class NewProjectDao {
 		}
 		return t_status;
 	}
+	
 }

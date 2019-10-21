@@ -25,7 +25,7 @@ public class NewProjectServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// method to return user list from userDao
+		
 		NewProjectDao dao = new NewProjectDao();
 		ArrayList<User> userList = dao.userList();
 		

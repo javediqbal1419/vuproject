@@ -1,0 +1,14 @@
+.smallbox{
+	color:red;
+	background:red;
+
+	margin-top:-10px;
+	
+	
+	
+}
+.smallbox select option{
+	border-radius:10px;
+}
+
+}
