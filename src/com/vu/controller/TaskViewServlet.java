@@ -2,6 +2,7 @@ package com.vu.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,8 +27,10 @@ public class TaskViewServlet extends HttpServlet {
 
 		NewProjectDao dao = new NewProjectDao();
 		ArrayList<Task> taskList = dao.taskList();
-		ArrayList<Integer> taskstatus = dao.taskStatus();
-		request.setAttribute("taskstatus", taskstatus);
+		Map<String, Integer> taskstatusMap = dao.taskStatus();
+		request.setAttribute("pending", taskstatusMap.get("pending"));
+		request.setAttribute("working", taskstatusMap.get("working"));
+		request.setAttribute("complete", taskstatusMap.get("complete"));
 		request.setAttribute("taskList", taskList);
 		request.getRequestDispatcher("jspPage/taskView.jsp").forward(request, response);
 

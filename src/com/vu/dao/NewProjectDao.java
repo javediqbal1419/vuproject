@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.vu.bo.Project;
 import com.vu.bo.Task;
@@ -19,14 +21,6 @@ public class NewProjectDao {
 
 	public String addProject(String projectName, String userName, String hours, String startDate, String endDate,
 			String desp) {
-
-//		String projectName = loginbean.getProjectName();
-//		String userName = loginbean.getName();
-//		String hours = loginbean.getHours();
-//		String startDate = loginbean.getStartDate();
-//		String endDate = loginbean.getEndDate();
-//		String desp = loginbean.getDesp();
-
 		String insertQuery = "INSERT INTO projects (projectName, projectUsers, startDate, endDate,p_status, totalHours, description) VALUES (?, ?, ?, ?, ?, ?,? )";
 
 		java.sql.PreparedStatement insert = null;
@@ -52,13 +46,9 @@ public class NewProjectDao {
 
 			}
 			insert.executeBatch();
-//			if (j != 0)
-//				return "SUCCESS";
-//
 			con.close();
 
 		} catch (Exception e) {
-			System.out.println("Enter Project " + e);
 		}
 
 		return "Please Enter Project Name ";
@@ -302,8 +292,9 @@ public class NewProjectDao {
 		return tACount;
 	}
 
-	public ArrayList<Integer> taskStatus() {
+	public Map<String, Integer> taskStatus() {
 		ArrayList<Integer> t_status = new ArrayList<Integer>();
+		Map<String, Integer> tc_map = new HashMap<String, Integer>();
 //		int tc = (Integer) null;
 		StringBuilder query = new StringBuilder(
 				"SELECT COUNT(IF (t.`task_status_id` = '1', 1, NULL)) AS pending, COUNT(IF (t.`task_status_id` = '2', 1, NULL)) AS working, COUNT(IF (t.`task_status_id` = '3', 1, NULL)) AS complete FROM Tasks t; ");
@@ -317,17 +308,20 @@ public class NewProjectDao {
 			while (resultSet.next()) {
 	
 				int tc1 = resultSet.getInt("pending");
+				tc_map.put("pending", tc1);
 				int tc2 = resultSet.getInt("working");
+				tc_map.put("working", tc2);
 				int tc3 = resultSet.getInt("complete");
-				t_status.add(tc1);
-				t_status.add(tc2);
-				t_status.add(tc3);
+				tc_map.put("complete", tc3);
+//				t_status.add(tc1);
+//				t_status.add(tc2);
+//				t_status.add(tc3);
 				System.out.println("Task count"+t_status);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return t_status;
+		return tc_map;
 	}
 	
 }

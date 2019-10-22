@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.vu.bo.Project;
+import com.vu.bo.Status;
 import com.vu.bo.User;
 import com.vu.dao.NewProjectDao;
 import com.vu.dao.UpdateDao;
@@ -25,13 +26,17 @@ public class UpdateProjectServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		UpdateDao pdao = new UpdateDao();
+		ArrayList<Status> projectStatus =pdao.getProjectStatus();
 		ArrayList<Project> projectview = pdao.projectview();
+		request.setAttribute("projectStatus", projectStatus);
 		request.setAttribute("projectview", projectview);
+		
 		request.getRequestDispatcher("jspPage/updateProject.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
+		
 	}
 
 }

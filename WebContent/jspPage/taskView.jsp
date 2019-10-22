@@ -60,8 +60,8 @@
 
 
 
-						<strong> ${taskstatus}Pending Task | Active Task |
-							Complete Task</strong>
+						<strong> Pending Task(${pending}) | Active Task(${working }) |
+							Complete Task(${complete})</strong>
 
 
 					</div>
