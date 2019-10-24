@@ -38,7 +38,7 @@ public class NewProjectServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		String projectName = request.getParameter("projectName");
 		String userName = request.getParameter("userName");
 		String hours = request.getParameter("hours");

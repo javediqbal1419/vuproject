@@ -82,7 +82,7 @@
 							<div>
 								<h2>Sign up</h2>
 								<p class="mt-4">Register now, it's free.</p>
-								<a href="<%=request.getContextPath()%>/jspPage/newUser.jsp"
+								<a href="<%=request.getContextPath()%>/SignUpServlet"
 									class="btn btn-primary active mt-3">Register Now!</a>
 							</div>
 						</div>

@@ -44,11 +44,19 @@ background: red;}</style>
           <img src="https://gui-projects.s3.amazonaws.com/static/core/img/avatar/blank_profile.png" class="img-avatar" alt="AnonymousUser">
           
         </a>
+        
+        
+       
+        
+        
         <div class="dropdown-menu dropdown-menu-right">
           
+          <a class="dropdown-item" href="<%=request.getContextPath()%>/jspPage/updateProfile.jsp"><i class="fa fa-user"></i> Profile</a>
           <a class="dropdown-item" href="<%=request.getContextPath()%>/login.jsp"><i class="fa fa-user"></i> Logout</a>
-          
         </div>
+        
+        
+        
       </li>
     </ul>
 
@@ -82,7 +90,7 @@ background: red;}</style>
             </ul>
             
             <li class="nav-item nav-dropdown">
-            <a class="nav-link nav-dropdown-toggle" href=""><i class="fa fa-address-card"></i> Update</a>
+            <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-address-card"></i> Update</a>
             <ul class="nav-dropdown-items">
               <li class="nav-item">
                 <a class="nav-link" href="<%=request.getContextPath()%>/UpdateProjectServlet"><i class="fa fa-puzzle-piece"></i> Update Project</a>

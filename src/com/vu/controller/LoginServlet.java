@@ -15,7 +15,7 @@ import com.vu.dao.LoginDao;
 import com.vu.dao.NewProjectDao;
 import com.vu.java.LoginBean;
 
-@WebServlet(name = "LoginServlet", urlPatterns = { "/login", "/jspPage/signup" })
+@WebServlet(name = "LoginServlet", urlPatterns = { "/login" })
 public class LoginServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -45,46 +45,13 @@ public class LoginServlet extends HttpServlet {
 
 		}
 
-		else if (url.contains("signup"))
-			
-
-		{
-			System.out.println("Not Signup this page");
-			// do signup
-			String userName = request.getParameter("user");
-			String firstName = request.getParameter("firstName");
-			String lastName = request.getParameter("lastName");
-			String userPass = request.getParameter("pass1");
-			String email = request.getParameter("email");
-			String role = request.getParameter("role");
-
-			LoginBean loginBean = new LoginBean();
-			loginBean.setName(userName);
-			loginBean.setFirstName(firstName);
-			loginBean.setLastName(lastName);
-			loginBean.setPassword(userPass);
-			loginBean.setEmail(email);
-			loginBean.setRole(role);
-			LoginDao loginDao = new LoginDao();
-			String signupUser = loginDao.signup(loginBean);
-
-			if (signupUser.equals("SUCCESS")) {
-				
-				response.sendRedirect("jspPage/welcome.jsp");
-				
-				} else {
-				System.out.println("Not Signup");
-
-			}
-
-		}
+		
 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		
+
 		processRequest(request, response);
 //		int roleId = request.getParameter("id");
 //		String role = request.getParameter("role");
@@ -102,11 +69,11 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		processRequest(request, response);
-		
+//
 //		LoginDao udao = new LoginDao();
-//		ArrayList<User> userRole = udao.userRole();		
+//		ArrayList<User> userRole = udao.userRole();
 //		request.setAttribute("userRole", userRole);
-//		request.getRequestDispatcher("jspPage/newUser.jsp").forward(request, response);
+//		 request.getRequestDispatcher("jspPage/newUser.jsp").forward(request, response);
 	}
 
 }

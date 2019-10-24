@@ -52,7 +52,7 @@
 								<input type='hidden' name='' value='3' />
 								<h1>Users</h1>
 								<p class="text-muted">Create users here</p>
-								<form action="signup" method="post">
+								<form action="SignUpServlet" method="post">
 									<input type='hidden' name='' value='' />
 									<div class="form-group">
 										<div class="input-group">
@@ -114,10 +114,11 @@
 										<label class="col-form-label">Project Role</label>
 										<div class="input-group">
 											<select id="userRole" name="userRole" class="form-control">
-												<c:forEach items="${userRole}" var="role"
+												<c:forEach items="${userRole}" var="user"
 													varStatus="countST">
-													<option value="${role.roleId}"><c:out
-															value="${role.role}"></c:out></option>
+													<option value="${user.roleId}">
+													<c:out value="${user.role}"></c:out>
+													</option>
 												</c:forEach>
 											</select>
 											<div class="input-group-append">
@@ -164,7 +165,7 @@
 		
 		$.ajax({
 		type: "POST",
-		url: "<%=request.getContextPath()%>/LoginServlet/signup",
+		url: "<%=request.getContextPath()%>/SignUpServlet",
 				data : {
 
 					user : $("#user").val(),

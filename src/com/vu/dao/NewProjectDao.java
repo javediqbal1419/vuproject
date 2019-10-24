@@ -204,7 +204,10 @@ public class NewProjectDao {
 	public ArrayList<Project> userview() {
 		ArrayList<Project> userShow = new ArrayList<Project>();
 		StringBuilder query = new StringBuilder(
-				"SELECT u.`id`, CONCAT_WS(' ', firstName, lastName) AS name,u.`currentDate` AS u_currentDate, COUNT(DISTINCT u.`id`) AS usersCount, COUNT(DISTINCT t.`id`) AS taskCount, COUNT(DISTINCT p.id) AS proCount FROM  users u LEFT JOIN tasks t ON u.`id` = t.`userId` LEFT JOIN projects p ON u.`id` = p.`projectUsers`");
+				"SELECT u.`id`, CONCAT_WS(' ', firstName, lastName) AS name,u.`currentDate` AS u_currentDate, ");
+		query.append("  COUNT(DISTINCT u.`id`) AS usersCount, ");
+		query.append("  COUNT(DISTINCT t.`id`) AS taskCount, COUNT(DISTINCT p.id) AS proCount FROM  users u ");
+		query.append(" LEFT JOIN tasks t ON u.`id` = t.`userId` LEFT JOIN projects p ON u.`id` = p.`projectUsers` ");
 		query.append("GROUP BY  u.`id`; ");
 		Connection con = null;
 		Statement statement = null;
