@@ -1,14 +1,13 @@
-.smallbox{
-	color:red;
-	background:red;
-
-	margin-top:-10px;
-	
-	
-	
-}
-.smallbox select option{
+.perbtn_m{
 	border-radius:10px;
 }
-
+.perbtn_p{
+	border-radius:10px;
+}
+.progressbar{
+	
+            padding: 0px;
+            border: 0 none;
+            background: #444;
+            border-radius: 10px;
 }

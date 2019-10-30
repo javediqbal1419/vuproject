@@ -2,6 +2,7 @@ package com.vu.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,9 +27,18 @@ public class ProjectViewServlet extends HttpServlet {
 		NewProjectDao pdao = new NewProjectDao();
 		ArrayList<Project> projectview = pdao.projectview();
 
-		int projectCount = pdao.p_count();
+		Map<String, Integer> projectCountMap = pdao.projectCount();
+		request.setAttribute("pending", projectCountMap.get("pending"));
+		request.setAttribute("working", projectCountMap.get("working"));
+		request.setAttribute("complete", projectCountMap.get("complete"));
 		request.setAttribute("projectview", projectview);
-		request.setAttribute("projectCount", projectCount);
+		
+		Map<String, Integer> projectStatusProgMap = pdao.projectStatusProg();
+		request.setAttribute("proToDo", projectStatusProgMap.get("proToDo"));
+		request.setAttribute("proWorking", projectStatusProgMap.get("proWorking"));
+		request.setAttribute("proComplete", projectStatusProgMap.get("proComplete"));
+		
+		
 		request.getRequestDispatcher("jspPage/projectView.jsp").forward(request, response);
 	}
 

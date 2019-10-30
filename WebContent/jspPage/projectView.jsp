@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<jsp:include page="home.jsp"/>
+<jsp:include page="home.jsp" />
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -42,7 +42,7 @@
 
 
 	<div class="app-body">
-	<!-- Main content -->
+		<!-- Main content -->
 		<main class="main">
 			<!-- Breadcrumb -->
 			<ol class="breadcrumb">
@@ -50,204 +50,241 @@
 				<li class="breadcrumb-item">Home</li>
 				<li class="breadcrumb-item">Projects</li>
 				<li class="breadcrumb-item active">Views</li>
-			</ol>     	  
+			</ol>
 
-<div class="col-md-12">
-	<div class="card">
-		<div class="card-header">
-			<strong> Total Number of Active Projects</strong>
-		</div>
-		<div class="card-body">
-			<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-header">
+						<strong> All Projects Status</strong>
+					</div>
+					<div class="card-body">
+						<div class="row">
 
-				<div class="col-sm-8">
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="callout callout-dark">
-								<small class="text-muted">Tasks</small> <br> <strong
-									class="h4">41</strong>
-								<div class="chart-wrapper">
-									<div class="chartjs-size-monitor"
-										style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-										<div class="chartjs-size-monitor-expand"
-											style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-											<div
-												style="position: absolute; width: 1000000px; height: 1000000px; left: 0; top: 0"></div>
-										</div>
-										<div class="chartjs-size-monitor-shrink"
-											style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-											<div
-												style="position: absolute; width: 200%; height: 200%; left: 0; top: 0"></div>
-										</div>
-									</div>
-									<canvas id="sparkline-chart-3" width="86" height="25"
-										class="chartjs-render-monitor"
-										style="display: block; width: 86px; height: 25px;"></canvas>
-								</div>
-							</div>
-						</div>
+							<div class="col-sm-12">
+								<div class="row">
 
-						<div class="col-sm-6">
-							<div class="callout callout-danger">
-								<small class="text-muted">Overdue Tasks </small> <br> <strong
-									class="h4">12</strong>
-								<div class="chart-wrapper">
-									<div class="chartjs-size-monitor"
-										style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-										<div class="chartjs-size-monitor-expand"
-											style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-											<div
-												style="position: absolute; width: 1000000px; height: 1000000px; left: 0; top: 0"></div>
-										</div>
-										<div class="chartjs-size-monitor-shrink"
-											style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
-											<div
-												style="position: absolute; width: 200%; height: 200%; left: 0; top: 0"></div>
+									<div class="col-sm-3">
+										<div class="callout callout-danger">
+											<small class="text-muted">To Do Projects </small> <br> <strong
+												class="h4">${pending }</strong>
+											<div class="chart-wrapper">
+												<div class="chartjs-size-monitor"
+													style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+													<div class="chartjs-size-monitor-expand"
+														style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+														<div
+															style="position: absolute; width: 1000000px; height: 1000000px; left: 0; top: 0"></div>
+													</div>
+													<div class="chartjs-size-monitor-shrink"
+														style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+														<div
+															style="position: absolute; width: 200%; height: 200%; left: 0; top: 0"></div>
+													</div>
+												</div>
+												<canvas id="sparkline-chart-4" width="86" height="25"
+													class="chartjs-render-monitor"
+													style="display: block; width: 86px; height: 25px;"></canvas>
+											</div>
 										</div>
 									</div>
-									<canvas id="sparkline-chart-4" width="86" height="25"
-										class="chartjs-render-monitor"
-										style="display: block; width: 86px; height: 25px;"></canvas>
+
+
+									<div class="col-sm-3">
+										<div class="callout callout-primary">
+											<small class="text-muted">Active Projects</small> <br> <strong
+												class="h4">${working}</strong>
+											<div class="chart-wrapper">
+												<div class="chartjs-size-monitor"
+													style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+													<div class="chartjs-size-monitor-expand"
+														style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+														<div
+															style="position: absolute; width: 1000000px; height: 1000000px; left: 0; top: 0"></div>
+													</div>
+													<div class="chartjs-size-monitor-shrink"
+														style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+														<div
+															style="position: absolute; width: 200%; height: 200%; left: 0; top: 0"></div>
+													</div>
+												</div>
+												<canvas id="sparkline-chart-3" width="86" height="25"
+													class="chartjs-render-monitor"
+													style="display: block; width: 86px; height: 25px;"></canvas>
+											</div>
+										</div>
+									</div>
+
+
+
+									<div class="col-sm-3">
+										<div class="callout callout-success">
+											<small class="text-muted">Completed Projects</small> <br>
+											<strong class="h4">${complete }</strong>
+											<div class="chart-wrapper">
+												<div class="chartjs-size-monitor"
+													style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+													<div class="chartjs-size-monitor-expand"
+														style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+														<div
+															style="position: absolute; width: 1000000px; height: 1000000px; left: 0; top: 0"></div>
+													</div>
+													<div class="chartjs-size-monitor-shrink"
+														style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+														<div
+															style="position: absolute; width: 200%; height: 200%; left: 0; top: 0"></div>
+													</div>
+												</div>
+												<canvas id="sparkline-chart-3" width="86" height="25"
+													class="chartjs-render-monitor"
+													style="display: block; width: 86px; height: 25px;"></canvas>
+											</div>
+										</div>
+									</div>
+									
+									<div class="col-sm-3">
+										<div class="callout callout-warning">
+											<small class="text-muted">Over Due Projects</small> <br>
+											<strong class="h4">${complete }</strong>
+											<div class="chart-wrapper">
+												<div class="chartjs-size-monitor"
+													style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+													<div class="chartjs-size-monitor-expand"
+														style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+														<div
+															style="position: absolute; width: 1000000px; height: 1000000px; left: 0; top: 0"></div>
+													</div>
+													<div class="chartjs-size-monitor-shrink"
+														style="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+														<div
+															style="position: absolute; width: 200%; height: 200%; left: 0; top: 0"></div>
+													</div>
+												</div>
+												<canvas id="sparkline-chart-3" width="86" height="25"
+													class="chartjs-render-monitor"
+													style="display: block; width: 86px; height: 25px;"></canvas>
+											</div>
+										</div>
+									</div>
+
+
 								</div>
+
+								<hr class="mt-0">
+								<ul class="horizontal-bars type-2">
+
+
+									<li class="my-2"><span class="badge badge-danger"
+										style="width: 50px;">To Do</span> <span class="value">
+											<span class="text-muted small">${proToDo}%</span>
+									</span>
+										<div class="bars">
+											<div class="progress progress-xs">
+												<div class="progress-bar bg-danger" role="progressbar"
+													style="width: ${proToDo}%" aria-valuenow="22.0"
+													aria-valuemin="0" aria-valuemax="100"></div>
+											</div>
+										</div></li>
+									<li class="my-2"><span class="badge badge-info"
+										style="width: 50px;">Active</span> <span class="value">
+											<span class="text-muted small">${proWorking }%</span>
+									</span>
+										<div class="bars">
+											<div class="progress progress-xs">
+												<div class="progress-bar bg-primary" role="progressbar"
+													style="width: ${proWorking}%" aria-valuenow="5.0"
+													aria-valuemin="0" aria-valuemax="100"></div>
+											</div>
+										</div></li>
+
+
+
+
+
+									<li class="my-2"><span class="badge badge-success"
+										style="width: 50px;">Completed!</span> <span class="value">
+											<span class="text-muted small">${proComplete }%</span>
+									</span>
+										<div class="bars">
+											<div class="progress progress-xs">
+												<div class="progress-bar bg-success" role="progressbar"
+													style="width: ${proComplete}%"
+													aria-valuenow="${proComplete }" aria-valuemin="0"
+													aria-valuemax="100"></div>
+											</div>
+										</div></li>
+
+								</ul>
 							</div>
+
 						</div>
 
+						<br>
 
 					</div>
-
-					<hr class="mt-0">
-					<ul class="horizontal-bars type-2">
-						<li><i class="fa fa-percent"></i> <span class="title">Projects</span>
-							<span class="value">17.2%</span>
-							<div class="bars">
-								<div class="progress progress-xs">
-									<div class="progress-bar bg-warning" role="progressbar"
-										style="width: 17.2%" aria-valuenow="43" aria-valuemin="0"
-										aria-valuemax="100"></div>
-								</div>
-							</div></li>
-						<li class="divider"></li>
-
-						<li class="my-2"><span class="badge badge-danger"
-							style="width: 50px;">Stuck</span> <span class="title ml-1">a11</span>
-
-							<span class="value"> <span class="text-muted small">deadline:
-							</span>Dec. 11, 2019 <span class="text-muted small">(22.0%)</span>
-						</span>
-							<div class="bars">
-								<div class="progress progress-xs">
-									<div class="progress-bar bg-success" role="progressbar"
-										style="width: 22.0%" aria-valuenow="22.0" aria-valuemin="0"
-										aria-valuemax="100"></div>
-								</div>
-							</div></li>
-
-						<li class="my-2"><span class="badge badge-info"
-							style="width: 50px;">Working</span> <span class="title ml-1">aaa</span>
-
-							<span class="value"> <span class="text-muted small">deadline:
-							</span>Jan. 2, 2010 <span class="text-muted small">(5.0%)</span>
-						</span>
-							<div class="bars">
-								<div class="progress progress-xs">
-									<div class="progress-bar bg-success" role="progressbar"
-										style="width: 5.0%" aria-valuenow="5.0" aria-valuemin="0"
-										aria-valuemax="100"></div>
-								</div>
-							</div></li>
-
-						<li class="my-2"><span class="badge badge-success"
-							style="width: 50px;">Done!</span> <span class="title ml-1">ERP
-								Implementation</span> <span class="value"> <span
-								class="text-muted small">deadline: </span>April 18, 2018 <span
-								class="text-muted small">(100.0%)</span>
-						</span>
-							<div class="bars">
-								<div class="progress progress-xs">
-									<div class="progress-bar bg-success" role="progressbar"
-										style="width: 100.0%" aria-valuenow="100.0" aria-valuemin="0"
-										aria-valuemax="100"></div>
-								</div>
-							</div></li>
-
-					</ul>
 				</div>
-
 			</div>
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-body">
+						<div class="row">
+							<c:forEach items="${projectview}" var="project"
+								varStatus="countST">
 
-			<br>
+								<div class="col-12 col-md-6 col-lg-4">
+									<div class="card mx-2">
+										<div class="card-body">
+											<div class="h4 m-0">
+												${project.projectName }
 
-		</div>
-	</div>
-</div>
-<div class="col-md-12">
-	<div class="card">
-		<div class="card-header">
-			<strong>${projectCount} Active Projects</strong>
-		</div>
-		<div class="card-body">
-			<div class="row">
-				<c:forEach items="${projectview}" var="project" varStatus="countST">
+												<p class="text-right lead text-danger">${project.p_status }</p>
 
-					<div class="col-12 col-md-6 col-lg-4">
-						<div class="card mx-2">
-							<div class="card-body">
-								<div class="h4 m-0">
-									${project.projectName }
+											</div>
+											<div>
+												<div>${project.descp }</div>
+											</div>
+											<p class="text-muted mb-0 text-right">${project.proProg }%</p>
+											<div class="progress progress-xs mb-3">
 
-									<p class="text-right lead text-danger">${project.p_status }</p>
+												<div class="progress-bar bg-danger role="
+													progressbar" style="width: ${project.proProg}%"
+													aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
 
+											</div>
+											<small class="text-muted">Due Date : ${project.pEndDate}</small>
+										</div>
+									</div>
 								</div>
-								<div>
-									<div>${project.descp }</div>
-								</div>
-								<p class="text-muted mb-0 text-right">100.0%</p>
-								<div class="progress progress-xs mb-3">
-
-									<div class="progress-bar bg-danger role="
-										progressbar" style="width: 100.0%" aria-valuenow="25"
-										aria-valuemin="0" aria-valuemax="100"></div>
-
-								</div>
-								<small class="text-muted">${project.name}</small>
-							</div>
+							</c:forEach>
 						</div>
 					</div>
-				</c:forEach>
+				</div>
 			</div>
-		</div>
+		</main>
 	</div>
-</div>
-</main>
-</div>
 
-<footer class="app-footer">
-	<span><a href="https://javediqbal1419.netlify.com/">
-			Copyright </a> © 2019 | Project Manager (PMAN) Developed by Javed.</span>
-</footer>
 
-<!-- Bootstrap and necessary plugins -->
-<script
-	src="https://gui-projects.s3.amazonaws.com/static/core/vendors/js/jquery.min.js"></script>
-<script
-	src="https://gui-projects.s3.amazonaws.com/static/core/vendors/js/popper.min.js"></script>
-<script
-	src="https://gui-projects.s3.amazonaws.com/static/core/vendors/js/bootstrap.min.js"></script>
-<script
-	src="https://gui-projects.s3.amazonaws.com/static/core/vendors/js/pace.min.js"></script>
-<script
-	src="https://gui-projects.s3.amazonaws.com/static/core/vendors/js/Chart.min.js"></script>
+	<!-- Bootstrap and necessary plugins -->
+	<script
+		src="https://gui-projects.s3.amazonaws.com/static/core/vendors/js/jquery.min.js"></script>
+	<script
+		src="https://gui-projects.s3.amazonaws.com/static/core/vendors/js/popper.min.js"></script>
+	<script
+		src="https://gui-projects.s3.amazonaws.com/static/core/vendors/js/bootstrap.min.js"></script>
+	<script
+		src="https://gui-projects.s3.amazonaws.com/static/core/vendors/js/pace.min.js"></script>
+	<script
+		src="https://gui-projects.s3.amazonaws.com/static/core/vendors/js/Chart.min.js"></script>
 
-<!-- CoreUI main scripts -->
+	<!-- CoreUI main scripts -->
 
-<script
-	src="https://gui-projects.s3.amazonaws.com/static/core/js/app.js"></script>
+	<script
+		src="https://gui-projects.s3.amazonaws.com/static/core/js/app.js"></script>
 
-<!-- Plugins and scripts required by this views -->
+	<!-- Plugins and scripts required by this views -->
 
-<!-- Custom scripts required by this view -->
-<script
-	src="https://gui-projects.s3.amazonaws.com/static/core/js/main.js"></script>
+	<!-- Custom scripts required by this view -->
+	<script
+		src="https://gui-projects.s3.amazonaws.com/static/core/js/main.js"></script>
 
 </body>
 

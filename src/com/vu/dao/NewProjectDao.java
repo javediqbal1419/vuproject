@@ -39,7 +39,7 @@ public class NewProjectDao {
 				insert.setString(2, userList[i]);
 				insert.setString(3, startDate);
 				insert.setString(4, endDate);
-				insert.setString(5, "2");
+				insert.setString(5, "1");
 				insert.setString(6, hours);
 				insert.setString(7, desp);
 				insert.addBatch();
@@ -146,10 +146,11 @@ public class NewProjectDao {
 	public ArrayList<Task> taskList() {
 		ArrayList<Task> tList = new ArrayList<Task>();
 		StringBuilder query = new StringBuilder(
-				"SELECT u.`name`, t.`taskName`,p.`projectName`,ts.`status` FROM `users` u,`tasks` t,`projects` p, `task_status` ts ");
-		query.append(" WHERE p.`id` = t.`projectId` ");
+				"SELECT u.`name`, t.`taskName`,p.`projectName`,ts.`status`, t.`taskPercent`, t.`endDate`  ");
+		query.append(" FROM `users` u,`tasks` t,`projects` p, `task_status` ts");
+		query.append(" WHERE p.`id` = t.`projectId`");
 		query.append("AND t.`userId` = u.`id` ");
-		query.append("AND t.`task_status_id` = ts.`id` ");
+		query.append("AND t.`task_status_id` = ts.`id`");
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -164,6 +165,8 @@ public class NewProjectDao {
 				ts.setProjectName(resultSet.getString("projectName"));
 				ts.setTaskName(resultSet.getString("taskName"));
 				ts.setStatus(resultSet.getString("status"));
+				ts.setTaskPercent(resultSet.getString("taskPercent"));
+				ts.settEndDate(resultSet.getString("endDate"));
 				tList.add(ts);
 			}
 		} catch (SQLException e) {
@@ -175,10 +178,11 @@ public class NewProjectDao {
 	public ArrayList<Project> projectview() {
 		ArrayList<Project> projectShow = new ArrayList<Project>();
 		StringBuilder query = new StringBuilder(
-				"SELECT u.`name`, p.`description`,p.`projectName`,ps.`p_status` FROM `users` u,`tasks` t,`projects` p, `pr_status` ps ");
-		query.append("WHERE p.`id` = t.`projectId`");
-		query.append("AND t.`userId` = u.`id`  ");
-		query.append("AND p.`p_status` = ps.`id`  ");
+				"SELECT p.`id`, p.`description`,p.`projectName`, ps.`p_status`, ROUND(AVG(t.`taskPercent`),2) proProg, p.`endDate` ");
+		query.append(" FROM tasks t");
+		query.append(" RIGHT JOIN projects p ON p.`id` = t.`projectId`");
+		query.append(" LEFT JOIN pr_status ps ON ps.`id` = p.`p_status`");
+		query.append(" GROUP BY p.`projectName`");
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -188,11 +192,13 @@ public class NewProjectDao {
 			resultSet = statement.executeQuery(query.toString());
 			while (resultSet.next()) {
 				Project ps = new Project();
-				ps.setName(resultSet.getString("name"));
+				ps.setProjectId(resultSet.getInt("id"));
 				ps.setDescp(resultSet.getString("description"));
 				ps.setProjectName(resultSet.getString("projectName"));
 				ps.setP_status(resultSet.getString("p_status"));
-				projectShow.add(ps);
+				ps.setProProg(resultSet.getString("proProg"));
+				ps.setpEndDate(resultSet.getString("endDate"));
+				projectShow.add(ps);	
 
 			}
 		} catch (SQLException e) {
@@ -204,11 +210,14 @@ public class NewProjectDao {
 	public ArrayList<Project> userview() {
 		ArrayList<Project> userShow = new ArrayList<Project>();
 		StringBuilder query = new StringBuilder(
-				"SELECT u.`id`, CONCAT_WS(' ', firstName, lastName) AS name,u.`currentDate` AS u_currentDate, ");
-		query.append("  COUNT(DISTINCT u.`id`) AS usersCount, ");
-		query.append("  COUNT(DISTINCT t.`id`) AS taskCount, COUNT(DISTINCT p.id) AS proCount FROM  users u ");
-		query.append(" LEFT JOIN tasks t ON u.`id` = t.`userId` LEFT JOIN projects p ON u.`id` = p.`projectUsers` ");
-		query.append("GROUP BY  u.`id`; ");
+				" SELECT u.`id`, CONCAT_WS(' ', firstName, lastName) AS NAME,u.`currentDate` AS u_currentDate, ");
+		query.append("  COUNT(DISTINCT p.`projectName`) AS proCount, ");
+		query.append("  COUNT(DISTINCT t.`id`) AS taskCount,");
+		query.append(" AVG(IFNULL(t.`taskPercent`,0)) AS proPercent, ");
+		query.append(" AVG(t.`taskPercent`) AS taskPercent");
+		query.append(" FROM  users u	INNER JOIN projects p ON p.`projectUsers` = u.`id`");
+		query.append(" LEFT JOIN tasks t ON u.`id` = t.`userId` AND t.`projectId` = p.`id`");
+		query.append(" GROUP BY  u.`id` ");
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -222,6 +231,8 @@ public class NewProjectDao {
 				us.setTaskCount(resultSet.getInt("taskCount"));
 				us.setProCount(resultSet.getInt("proCount"));
 				us.setU_currentDate(resultSet.getString("u_currentDate"));
+				us.setProPercent(resultSet.getFloat("proPercent"));
+				us.setTaskPercent(resultSet.getFloat("taskPercent"));
 				userShow.add(us);
 			}
 		} catch (SQLException e) {
@@ -298,9 +309,11 @@ public class NewProjectDao {
 	public Map<String, Integer> taskStatus() {
 		ArrayList<Integer> t_status = new ArrayList<Integer>();
 		Map<String, Integer> tc_map = new HashMap<String, Integer>();
-//		int tc = (Integer) null;
 		StringBuilder query = new StringBuilder(
-				"SELECT COUNT(IF (t.`task_status_id` = '1', 1, NULL)) AS pending, COUNT(IF (t.`task_status_id` = '2', 1, NULL)) AS working, COUNT(IF (t.`task_status_id` = '3', 1, NULL)) AS complete FROM Tasks t; ");
+				"SELECT COUNT(IF (t.`task_status_id` = '1', 1, NULL)) AS pending,");
+		query.append(" COUNT(IF (t.`task_status_id` = '2', 1, NULL)) AS working,");
+		query.append(" COUNT(IF (t.`task_status_id` = '3', 1, NULL)) AS complete");
+		query.append(" FROM Tasks t");
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -316,15 +329,71 @@ public class NewProjectDao {
 				tc_map.put("working", tc2);
 				int tc3 = resultSet.getInt("complete");
 				tc_map.put("complete", tc3);
-//				t_status.add(tc1);
-//				t_status.add(tc2);
-//				t_status.add(tc3);
-				System.out.println("Task count"+t_status);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return tc_map;
 	}
+	public Map<String, Integer> projectCount(){
+		Map<String, Integer> pc_map = new HashMap<String, Integer>();
+		StringBuilder query = new StringBuilder(
+				"SELECT COUNT(IF (p.`p_status` = '1', 1, NULL)) AS pending,");
+		query.append(" COUNT(IF (p.`p_status` = '2', 1, NULL)) AS working,");
+		query.append(" COUNT(IF (p.`p_status` = '3', 1, NULL)) AS complete");
+		query.append(" FROM projects p");
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = DBConnection.createConection();
+			statement = con.createStatement();
+			resultSet = statement.executeQuery(query.toString());
+			while (resultSet.next()) {
 	
+				int pc1 = resultSet.getInt("pending");
+				pc_map.put("pending", pc1);
+				int pc2 = resultSet.getInt("working");
+				pc_map.put("working", pc2);
+				int pc3 = resultSet.getInt("complete");
+				pc_map.put("complete", pc3);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return pc_map;
+		
+	}
+	
+	public Map<String, Integer> projectStatusProg(){
+		Map<String, Integer> psp_map = new HashMap<String, Integer>();
+		StringBuilder query = new StringBuilder(
+				"SELECT COUNT(IF (p.`p_status` = '1', 1, NULL)) AS proToDo,");
+		query.append(" COUNT(IF (p.`p_status` = '2', 1, NULL)) AS proWorking,");
+		query.append(" COUNT(IF (p.`p_status` = '3', 1, NULL)) AS proComplete");
+		query.append(" FROM projects p");
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = DBConnection.createConection();
+			statement = con.createStatement();
+			resultSet = statement.executeQuery(query.toString());
+			while (resultSet.next()) {
+	
+				int psp1 = resultSet.getInt("proToDo");
+				psp_map.put("proToDo", psp1);
+				int psp2 = resultSet.getInt("proWorking");
+				psp_map.put("proWorking", psp2);
+				int psp3 = resultSet.getInt("proComplete");
+				psp_map.put("proComplete", psp3);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return psp_map;
+		
+	}
 }

@@ -1,9 +1,22 @@
 package com.vu.bo;
 
 public class Task extends User {
+	
+	private int taskId;
 	private String taskName;
 	private String projectName;
 	private String status;
+	private String tEndDate;
+	private String taskPercent;
+	
+	
+	
+	public int getTaskId() {
+		return taskId;
+	}
+	public void setTaskId(int taskId) {
+		this.taskId = taskId;
+	}
 	public String getTaskName() {
 		return taskName;
 	}
@@ -21,6 +34,18 @@ public class Task extends User {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	public String getTaskPercent() {
+		return taskPercent;
+	}
+	public void setTaskPercent(String taskPercent) {
+		this.taskPercent = taskPercent;
+	}
+	public String gettEndDate() {
+		return tEndDate;
+	}
+	public void settEndDate(String tEndDate) {
+		this.tEndDate = tEndDate;
 	}
 	
 

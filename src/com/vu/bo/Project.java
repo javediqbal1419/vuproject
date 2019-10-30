@@ -1,14 +1,19 @@
 package com.vu.bo;
 
 public class Project {
-	String projectName;
-	int projectId;
+	private String projectName;
+	private int projectId;
+	private String proProg;
+	private String pEndDate;
 	private String taskName;
 	private String descp;
 	private String p_status;
 	private String name;
 	private int taskCount;
 	private int proCount;
+	private float taskPercent;
+	private float proPercent;
+	private String uTaskProg;
 	private String u_currentDate;
 	
 	public String getProjectName() {
@@ -65,6 +70,36 @@ public class Project {
 	}
 	public void setU_currentDate(String u_currentDate) {
 		this.u_currentDate = u_currentDate;
+	}
+	public String getProProg() {
+		return proProg;
+	}
+	public void setProProg(String proProg) {
+		this.proProg = proProg;
+	}
+	public String getuTaskProg() {
+		return uTaskProg;
+	}
+	public void setuTaskProg(String uTaskProg) {
+		this.uTaskProg = uTaskProg;
+	}
+	public String getpEndDate() {
+		return pEndDate;
+	}
+	public void setpEndDate(String pEndDate) {
+		this.pEndDate = pEndDate;
+	}
+	public float getTaskPercent() {
+		return taskPercent;
+	}
+	public void setTaskPercent(float taskPercent) {
+		this.taskPercent = taskPercent;
+	}
+	public float getProPercent() {
+		return proPercent;
+	}
+	public void setProPercent(float proPercent) {
+		this.proPercent = proPercent;
 	}
 	
 

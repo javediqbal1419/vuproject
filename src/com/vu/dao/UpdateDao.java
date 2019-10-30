@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import com.vu.bo.Project;
 import com.vu.bo.Status;
 import com.vu.bo.Task;
+import com.vu.bo.TaskStatus;
 import com.vu.bo.User;
 import com.vu.util.DBConnection;
 
@@ -17,7 +18,7 @@ public class UpdateDao {
 	public ArrayList<Task> uTaskList() {
 		ArrayList<Task> u_tList = new ArrayList<Task>();
 		StringBuilder query = new StringBuilder(
-				"SELECT u.`name`, t.`taskName`,p.`projectName`,ts.`status` FROM `users` u,`tasks` t,`projects` p, `task_status` ts ");
+				"SELECT t.`id`, u.`name`, t.`taskName`,p.`projectName`,ts.`status`, t.`taskPercent` FROM `users` u,`tasks` t,`projects` p, `task_status` ts ");
 		query.append(" WHERE p.`id` = t.`projectId` ");
 		query.append("AND t.`userId` = u.`id` ");
 		query.append("AND t.`task_status_id` = ts.`id` ");
@@ -31,10 +32,12 @@ public class UpdateDao {
 			resultSet = statement.executeQuery(query.toString());
 			while (resultSet.next()) {
 				Task utl = new Task();
+				utl.setId(resultSet.getInt("id"));
 				utl.setName(resultSet.getString("name"));
 				utl.setProjectName(resultSet.getString("projectName"));
 				utl.setTaskName(resultSet.getString("taskName"));
 				utl.setStatus(resultSet.getString("status"));
+				utl.setTaskPercent(resultSet.getString("taskPercent"));
 				u_tList.add(utl);
 			}
 		} catch (SQLException e) {
@@ -70,10 +73,11 @@ public class UpdateDao {
 	public ArrayList<Project> projectview() {
 		ArrayList<Project> projectShow = new ArrayList<Project>();
 		StringBuilder query = new StringBuilder(
-				"SELECT p.`id` projectId, u.`name`, p.`description`,p.`projectName`,ps.`p_status` FROM `users` u,`tasks` t,`projects` p, `pr_status` ps ");
-		query.append("WHERE p.`id` = t.`projectId`");
-		query.append("AND t.`userId` = u.`id`  ");
-		query.append("AND p.`p_status` = ps.`id`  ");
+				"SELECT p.`id`, p.`description`,p.`projectName`, ps.`p_status`, ROUND(AVG(t.`taskPercent`),2) proProg, p.`endDate` " ); 
+				query.append(" FROM tasks t ");
+				query.append(" RIGHT JOIN projects p ON p.`id` = t.`projectId`");
+				query.append(" LEFT JOIN pr_status ps ON ps.`id` = p.`p_status`"); 
+				query.append(" GROUP BY p.`projectName`");
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -83,11 +87,12 @@ public class UpdateDao {
 			resultSet = statement.executeQuery(query.toString());
 			while (resultSet.next()) {
 				Project ps = new Project();
-				ps.setProjectId(resultSet.getInt("projectId"));
-				ps.setName(resultSet.getString("name"));
+				ps.setProjectId(resultSet.getInt("id"));
 				ps.setDescp(resultSet.getString("description"));
 				ps.setProjectName(resultSet.getString("projectName"));
 				ps.setP_status(resultSet.getString("p_status"));
+				ps.setProProg(resultSet.getString("proProg"));
+				ps.setpEndDate(resultSet.getString("endDate"));
 				projectShow.add(ps);
 
 			}
@@ -149,4 +154,58 @@ public class UpdateDao {
 		return 1;
 
 	}
+	
+	public ArrayList<TaskStatus> getTaskStatus() {
+
+		ArrayList<TaskStatus> taskStatusList = new ArrayList<TaskStatus>();
+		StringBuilder query = new StringBuilder(" SELECT * FROM `task_status` ");
+		Connection con = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			con = DBConnection.createConection();
+			statement = con.createStatement();
+			resultSet = statement.executeQuery(query.toString());
+			while (resultSet.next()) {
+				TaskStatus taskStatus = new TaskStatus();
+				taskStatus.setTaskId(resultSet.getInt("id"));
+
+				taskStatus.setTaskTitle(resultSet.getString("status"));
+				taskStatusList.add(taskStatus);
+
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return taskStatusList;
+
+	}
+	
+	public int updateTaskStatus(String taskId, String taskStatus) {
+
+		StringBuilder query = new StringBuilder("UPDATE tasks t SET t.`task_status_id` = ? WHERE t.`id` = ? ");
+		java.sql.PreparedStatement insert = null;
+		Connection con = null;
+		Statement statement = null;
+
+		try {
+
+			con = DBConnection.createConection();
+		
+			insert = con.prepareStatement(query.toString());
+
+			insert.setInt(1, Integer.parseInt(taskStatus));
+			insert.setInt(2, Integer.parseInt(taskId));
+
+			insert.executeUpdate();
+			con.close();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return 1;
+
+	}
+
 }

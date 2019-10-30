@@ -101,7 +101,7 @@
 										<td>
 											<div class="clearfix">
 												<div class="float-left">
-													<strong>50%</strong>
+													<strong>${user.proPercent}%</strong>
 												</div>
 												<div class="float-right">
 													<small class="text-muted">of Total Projects</small>
@@ -109,7 +109,7 @@
 											</div>
 											<div class="progress progress-xs">
 												<div class="progress-bar bg-warning" role="progressbar"
-													style="width: 50%" aria-valuenow="74" aria-valuemin="0"
+													style="width: ${user.proPercent}%" aria-valuenow="74" aria-valuemin="0"
 													aria-valuemax="100"></div>
 											</div>
 										</td>
@@ -120,7 +120,7 @@
 
 											<div class="clearfix">
 												<div class="float-left">
-													<strong>70%</strong>
+													<strong>${user.taskPercent}%</strong>
 												</div>
 												<div class="float-right">
 													<small class="text-muted">of Total Tasks</small>
@@ -128,7 +128,7 @@
 											</div>
 											<div class="progress progress-xs">
 												<div class="progress-bar bg-warning" role="progressbar"
-													style="width: 70%" aria-valuenow="74" aria-valuemin="0"
+													style="width: ${user.taskPercent}%" aria-valuenow="74" aria-valuemin="0"
 													aria-valuemax="100"></div>
 											</div>
 										</td>

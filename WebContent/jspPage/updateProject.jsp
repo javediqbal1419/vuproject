@@ -6,7 +6,7 @@
 <html lang="en">
 <head>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/mycss/mcss.css" type="text/css">
+	href="<%=request.getContextPath()%>/mycss/mycss.css" type="text/css">
 <jsp:include page="home.jsp" />
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -65,8 +65,8 @@
 			<ol class="breadcrumb">
 
 				<li class="breadcrumb-item">Home</li>
-				<li class="breadcrumb-item">Projects</li>
-				<li class="breadcrumb-item active">Views</li>
+				<li class="breadcrumb-item">Update</li>
+				<li class="breadcrumb-item active">Update Project</li>
 			</ol>
 			<div class="col-md-12">
 				<div class="card">
@@ -104,15 +104,15 @@
 											<div>
 												<div>${project.descp }</div>
 											</div>
-											<p class="text-muted mb-0 text-right">50.0%</p>
+											<p class="text-muted mb-0 text-right">${project.proProg }%</p>
 											<div class="progress progress-xs mb-3">
 
 												<div class="progress-bar bg-danger role="
-													progressbar" style="width: 100.0%" aria-valuenow="25"
+													progressbar" style="width: ${project.proProg}%" aria-valuenow="25"
 													aria-valuemin="0" aria-valuemax="100"></div>
 
 											</div>
-											<small class="text-muted">${project.name}</small>
+											<small class="text-muted">Due Date : ${project.pEndDate}</small>
 										</div>
 									</div>
 								</div>

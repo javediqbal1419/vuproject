@@ -9,20 +9,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.vu.bo.Status;
 import com.vu.bo.Task;
+import com.vu.bo.TaskStatus;
 import com.vu.dao.NewProjectDao;
 import com.vu.dao.UpdateDao;
 
-/**
- * Servlet implementation class UpdateTaskServlet
- */
 @WebServlet("/UpdateTaskServlet")
 public class UpdateTaskServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     public UpdateTaskServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -30,8 +28,12 @@ public class UpdateTaskServlet extends HttpServlet {
 
 		UpdateDao dao = new UpdateDao();
 		ArrayList<Task> uTaskList = dao.uTaskList();
+		
+		ArrayList<TaskStatus> taskStatus = dao.getTaskStatus();
+		
 //		ArrayList<Integer> taskstatus = dao.taskStatus();
 //		request.setAttribute("taskstatus", taskstatus);
+		request.setAttribute("taskStatus", taskStatus);
 		request.setAttribute("uTaskList", uTaskList);
 		request.getRequestDispatcher("jspPage/updateTask.jsp").forward(request, response);
 
