@@ -83,9 +83,6 @@
 
 											<div class="smallbox" align="right">
 
-
-
-
 												<button type="button" data-whatever="${project.projectId }"
 													class="btn btn-link text-right lead text-danger"
 													data-toggle="modal" data-target="#exampleModal">

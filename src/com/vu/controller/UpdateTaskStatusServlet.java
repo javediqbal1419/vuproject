@@ -35,7 +35,7 @@ public class UpdateTaskStatusServlet extends HttpServlet {
 		System.err.println(taskStatus);
 		System.err.println(taskId);
 		UpdateDao pdao = new UpdateDao();
-		int res = pdao.updateProjectStatus(taskId, taskStatus);
+		int res = pdao.updateTaskStatus(taskId, taskStatus);
 	}
 
 }

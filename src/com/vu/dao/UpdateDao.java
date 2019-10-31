@@ -32,7 +32,7 @@ public class UpdateDao {
 			resultSet = statement.executeQuery(query.toString());
 			while (resultSet.next()) {
 				Task utl = new Task();
-				utl.setId(resultSet.getInt("id"));
+				utl.setTaskId(resultSet.getInt("id"));
 				utl.setName(resultSet.getString("name"));
 				utl.setProjectName(resultSet.getString("projectName"));
 				utl.setTaskName(resultSet.getString("taskName"));
