@@ -73,11 +73,11 @@ public class UpdateDao {
 	public ArrayList<Project> projectview() {
 		ArrayList<Project> projectShow = new ArrayList<Project>();
 		StringBuilder query = new StringBuilder(
-				"SELECT p.`id`, p.`description`,p.`projectName`, ps.`p_status`, ROUND(AVG(t.`taskPercent`),2) proProg, p.`endDate` " ); 
-				query.append(" FROM tasks t ");
-				query.append(" RIGHT JOIN projects p ON p.`id` = t.`projectId`");
-				query.append(" LEFT JOIN pr_status ps ON ps.`id` = p.`p_status`"); 
-				query.append(" GROUP BY p.`projectName`");
+				"SELECT p.`id`, p.`description`,p.`projectName`, ps.`p_status`, ROUND(AVG(t.`taskPercent`),2) proProg, p.`endDate` ");
+		query.append(" FROM tasks t ");
+		query.append(" RIGHT JOIN projects p ON p.`id` = t.`projectId`");
+		query.append(" LEFT JOIN pr_status ps ON ps.`id` = p.`p_status`");
+		query.append(" GROUP BY p.`projectName`");
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;
@@ -138,7 +138,7 @@ public class UpdateDao {
 		try {
 
 			con = DBConnection.createConection();
-		
+
 			insert = con.prepareStatement(query.toString());
 
 			insert.setInt(1, Integer.parseInt(status));
@@ -154,7 +154,7 @@ public class UpdateDao {
 		return 1;
 
 	}
-	
+
 	public ArrayList<TaskStatus> getTaskStatus() {
 
 		ArrayList<TaskStatus> taskStatusList = new ArrayList<TaskStatus>();
@@ -180,10 +180,37 @@ public class UpdateDao {
 		return taskStatusList;
 
 	}
-	
-	public int updateTaskStatus(String taskId, String taskStatus) {
 
-		StringBuilder query = new StringBuilder("UPDATE tasks t SET t.`task_status_id` = ? WHERE t.`id` = ? ");
+//	public int updateTaskStatus(String taskId, String taskStatus) {
+//
+//		StringBuilder query = new StringBuilder("UPDATE tasks t SET t.`task_status_id` = ? WHERE t.`id` = ? ");
+//		java.sql.PreparedStatement insert = null;
+//		Connection con = null;
+//		Statement statement = null;
+//
+//		try {
+//
+//			con = DBConnection.createConection();
+//
+//			insert = con.prepareStatement(query.toString());
+//
+//			insert.setInt(1, Integer.parseInt(taskStatus));
+//			insert.setInt(2, Integer.parseInt(taskId));
+//
+//			insert.executeUpdate();
+//			con.close();
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//
+//		return 1;
+//
+//	}
+
+	public int updateTaskStatus(String taskId, String taskPercent) {
+
+		StringBuilder query = new StringBuilder("UPDATE tasks t SET t.`taskPercent` = ? WHERE t.`id` = ? ");
 		java.sql.PreparedStatement insert = null;
 		Connection con = null;
 		Statement statement = null;
@@ -191,11 +218,12 @@ public class UpdateDao {
 		try {
 
 			con = DBConnection.createConection();
-		
+
 			insert = con.prepareStatement(query.toString());
 
-			insert.setInt(1, Integer.parseInt(taskStatus));
 			insert.setInt(2, Integer.parseInt(taskId));
+			insert.setInt(1, Integer.parseInt(taskPercent));
+			
 
 			insert.executeUpdate();
 			con.close();
@@ -207,5 +235,4 @@ public class UpdateDao {
 		return 1;
 
 	}
-
 }

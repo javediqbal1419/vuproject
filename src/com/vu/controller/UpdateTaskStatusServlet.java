@@ -30,12 +30,13 @@ public class UpdateTaskStatusServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String taskStatus=request.getParameter("taskStatus");
+//		String taskStatus=request.getParameter("taskStatus");
 		String taskId=request.getParameter("taskId");
-		System.err.println(taskStatus);
+		String taskPercent = request.getParameter("taskProgress");
+		System.err.println(taskPercent);
 		System.err.println(taskId);
 		UpdateDao pdao = new UpdateDao();
-		int res = pdao.updateTaskStatus(taskId, taskStatus);
+		int res = pdao.updateTaskStatus(taskId, taskPercent);
 	}
 
 }
