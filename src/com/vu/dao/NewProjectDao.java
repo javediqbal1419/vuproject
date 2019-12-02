@@ -112,7 +112,7 @@ public class NewProjectDao {
 			con.close();
 
 		} catch (Exception e) {
-			System.out.println("Enter Task " + e);
+			e.printStackTrace();
 
 		}
 		return null;
@@ -143,7 +143,7 @@ public class NewProjectDao {
 		return pList;
 	}
 
-	public ArrayList<Task> taskList() {
+	public ArrayList<Task> taskList(int userId) {
 		ArrayList<Task> tList = new ArrayList<Task>();
 		StringBuilder query = new StringBuilder(
 				"SELECT u.`name`, t.`taskName`,p.`projectName`,ts.`status`, t.`taskPercent`, t.`endDate`  ");
@@ -151,6 +151,7 @@ public class NewProjectDao {
 		query.append(" WHERE p.`id` = t.`projectId`");
 		query.append("AND t.`userId` = u.`id` ");
 		query.append("AND t.`task_status_id` = ts.`id`");
+		query.append(" AND u.`id` = " + userId);
 		Connection con = null;
 		Statement statement = null;
 		ResultSet resultSet = null;

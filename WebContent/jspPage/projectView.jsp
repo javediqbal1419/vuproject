@@ -17,7 +17,7 @@
 	content="Bootstrap,Admin,Template,Open,Source,AngularJS,Angular,Angular2,Angular 2,Angular4,Angular 4,jQuery,CSS,HTML,RWD,Dashboard,React,React.js,Vue,Vue.js">
 <meta name="google-site-verification"
 	content="83fcqoPn-YTkXathQiicW-x3U2RWZh4PaPUzk91wtjY" />
-<title>Task View</title>
+<title>Project View</title>
 
 <!-- Icons -->
 <link rel="stylesheet"

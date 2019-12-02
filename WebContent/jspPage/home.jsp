@@ -85,7 +85,7 @@ background: red;}</style>
                 <a class="nav-link" href="<%=request.getContextPath()%>/TaskViewServlet"><i class="fa fa-tasks fa_custom fa-2x"></i> Task`s Views</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/jspPage/costView.jsp"><i class="fa fa-user ml-2"></i> Cost`s Views</a>
+                <a class="nav-link" href="<%=request.getContextPath()%>/costViewServlet"><i class="fa fa-user ml-2"></i> Cost`s Views</a>
               </li>
             </ul>
             
@@ -129,7 +129,7 @@ background: red;}</style>
             <a class="nav-link nav-dropdown-toggle" href="#"><i class="fa fa-user"></i> Users</a>
             <ul class="nav-dropdown-items">
               <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath() %>/jspPage/newUser.jsp"><i class="fa fa-user-plus ml-2"></i> Create New User</a>
+                <a class="nav-link" href="<%=request.getContextPath() %>//SignUpServlet"><i class="fa fa-user-plus ml-2"></i> Create New User</a>
               </li>
             </ul>
           </li>

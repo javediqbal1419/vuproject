@@ -1,4 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
+<%@ page import="java.util.*,java.sql.*" %>
+<%@ page 
+import="com.vu.dao.CostDao"%>
+
 <html lang="en">
 <head>
 <jsp:include page="home.jsp"/>
@@ -17,7 +22,7 @@
 	content="Bootstrap,Admin,Template,Open,Source,AngularJS,Angular,Angular2,Angular 2,Angular4,Angular 4,jQuery,CSS,HTML,RWD,Dashboard,React,React.js,Vue,Vue.js">
 <meta name="google-site-verification"
 	content="83fcqoPn-YTkXathQiicW-x3U2RWZh4PaPUzk91wtjY" />
-<title>New Project</title>
+<title>Cost View</title>
 
 <!-- Icons -->
 <link rel="stylesheet"
@@ -50,11 +55,12 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		// Change type to "bar", "area", "spline", "pie",etc.
 		type: "column",
 		dataPoints: [
-			{ label: "apple",  y: 90  },
-			{ label: "orange", y: 15  },
-			{ label: "banana", y: 25  },
-			{ label: "mango",  y: 30  },
-			{ label: "grape",  y: 28  }
+			
+			
+				{ label: ${t_cost.projectName},  y: ${t_cost.totalCost}  },
+				
+				
+
 		]
 	}
 	]
@@ -73,5 +79,15 @@ chart.render();
 <body>
 <div id="chartContainer" class ="container projects" style="height: 370px; width: 50%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"> </script>
+<script>
+			<c:forEach items="${totalCost}" var="cost" varStatus="countST">
+					proName = ${totalCost.projectName}
+					pCost = ${totalCost.totalCost}
+								
+			</c:forEach>
+</script>
+
+
+
 </body>
 </html>

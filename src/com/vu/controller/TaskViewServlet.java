@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.vu.bo.Task;
+import com.vu.bo.User;
 import com.vu.dao.NewProjectDao;
 
 @WebServlet("/TaskViewServlet")
@@ -24,9 +25,11 @@ public class TaskViewServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		User user = (User) request.getSession().getAttribute("user");
+		int userId = user.getId();
 
 		NewProjectDao dao = new NewProjectDao();
-		ArrayList<Task> taskList = dao.taskList();
+		ArrayList<Task> taskList = dao.taskList(userId);
 		Map<String, Integer> taskstatusMap = dao.taskStatus();
 		request.setAttribute("pending", taskstatusMap.get("pending"));
 		request.setAttribute("working", taskstatusMap.get("working"));

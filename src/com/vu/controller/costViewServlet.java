@@ -1,40 +1,41 @@
 package com.vu.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Map;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.vu.dao.UpdateDao;
+import com.vu.bo.Cost;
+import com.vu.dao.CostDao;
 
-/**
- * Servlet implementation class UpdateTaskStatusServlet
- */
-@WebServlet("/UpdateTaskStatusServlet")
-public class UpdateTaskStatusServlet extends HttpServlet {
+@WebServlet("/costViewServlet")
+public class costViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     
-    public UpdateTaskStatusServlet() {
+    public costViewServlet() {
         super();
-      
+        
     }
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		CostDao cdao = new CostDao();
+		ArrayList<Cost> t_cost = cdao.projectCost();
+		request.setAttribute("proCost", t_cost);		
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		request.getRequestDispatcher("jspPage/costView.jsp").forward(request, response);
 	}
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		String taskStatus=request.getParameter("taskStatus");
-		String taskId=request.getParameter("taskId");
-		String taskPercent = request.getParameter("taskProgress");
-		UpdateDao pdao = new UpdateDao();
-		int res = pdao.updateTaskStatus(taskId, taskPercent);
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }

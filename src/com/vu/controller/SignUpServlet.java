@@ -60,7 +60,7 @@ public class SignUpServlet extends HttpServlet {
 
 		if (signupUser.equals("SUCCESS")) {
 
-			response.sendRedirect("jspPage/welcome.jsp");
+			response.sendRedirect("login.jsp");
 
 		} else {
 			System.out.println("Not Signup");

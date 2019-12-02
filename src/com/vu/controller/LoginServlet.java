@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.vu.bo.Project;
 import com.vu.bo.User;
@@ -22,6 +23,7 @@ public class LoginServlet extends HttpServlet {
 
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		String name = request.getParameter("name");
 		String password = request.getParameter("password");
 		String url = request.getRequestURI();
@@ -33,13 +35,14 @@ public class LoginServlet extends HttpServlet {
 			loginBean.setName(name);
 			loginBean.setPassword(password);
 			LoginDao loginDao = new LoginDao();
-			String userValidate = loginDao.authenticateUser(loginBean);
+			User userValidate = loginDao.authenticateUser(loginBean);
 
-			if (userValidate.equals("SUCCESS")) {
+			if (userValidate != null) {
+				session.setAttribute("user", userValidate);
 				response.sendRedirect("jspPage/welcome.jsp");
 
 			} else {
-				request.setAttribute("errMessage", userValidate);
+				request.setAttribute("errMessage", "Invalid Crediential");
 				request.getRequestDispatcher("/login.jsp").forward(request, response);
 			}
 

@@ -42,7 +42,8 @@ public class UpdateTaskServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		doPost(request, response);
+		System.out.println("post");
+//		doPost(request, response);
 	}
 
 }

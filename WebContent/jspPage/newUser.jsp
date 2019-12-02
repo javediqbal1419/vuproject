@@ -184,7 +184,7 @@
 
 		}
 		function updateSuccess() {
-			window.location.replace("<%=request.getContextPath()%>/jspPage/welcome.jsp");
+			window.location.replace("<%=request.getContextPath()%>/login.jsp");
 
 	}
 </script>

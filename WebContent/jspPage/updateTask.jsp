@@ -198,9 +198,7 @@
 		}
 function showVal(newVal,selectedId){
   document.getElementById("valBox").innerHTML=newVal;
-  alert(selectedId)
   
-
       $.ajax({
           type: "POST",
           url: "<%=request.getContextPath()%>/UpdateTaskStatusServlet",
@@ -221,17 +219,20 @@ function showVal(newVal,selectedId){
 // send ajax call to update value in db by selectedId
 }
 </script>
+</body>
 	<script>
         function updateTask() {
-
+        	
+        	
+        	//var  tasktId =$("#tasktId").val();
             $.ajax({
                 type: "POST",
                 url: "<%=request.getContextPath()%>/UpdateTaskStatusServlet",
                 data: {
 
-                    taskStatus: $("#taskStatus").val(),
-                    taskId: $("#tasktId").val(),
-                    taskpercent: $("#taskpercent").val,
+                  //  taskStatus: $("#taskStatus").val(),
+                    taskId: 10,
+                   // taskpercent: $("#taskpercent").val,
                 },
                 dataType: "json",
                 success: updateSuccess(),
@@ -239,12 +240,14 @@ function showVal(newVal,selectedId){
 
                 }
             });
+            
+            
 
         }
 
-        function updateSuccess() {
-        	alert("in updatesuccess method");
-            window.location.replace("<%=request.getContextPath()%>/jspPage/welcome.jsp");
+        function updateSuccess(data) {
+        	
+            <%-- window.location.replace("<%=request.getContextPath()%>/jspPage/welcome.jsp"); --%>
 
 		}
 		$('#exampleModal').on(
@@ -262,6 +265,6 @@ function showVal(newVal,selectedId){
 
 	</script>
 
-</body>
+
 
 </html>

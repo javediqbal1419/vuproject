@@ -116,7 +116,6 @@ public class UpdateDao {
 			while (resultSet.next()) {
 				Status status = new Status();
 				status.setId(resultSet.getInt("id"));
-
 				status.setTitle(resultSet.getString("p_status"));
 				statusList.add(status);
 

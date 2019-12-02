@@ -19,7 +19,8 @@ public class LoginDao {
 
 	}
 
-	public String authenticateUser(LoginBean loginBean) {
+	public User authenticateUser(LoginBean loginBean) {
+		User user = null;
 		String name = loginBean.getName();
 		String password = loginBean.getPassword();
 
@@ -27,28 +28,23 @@ public class LoginDao {
 		Statement statement = null;
 		ResultSet resultSet = null;
 
-		String userNameDB = null;
-		String passwordDB = null;
-
 		try {
 			con = DBConnection.createConection();
 			statement = con.createStatement();
-			resultSet = statement.executeQuery("SELECT id, NAME, PASSWORD FROM users;");
-			while (resultSet.next()) {
-				userId = resultSet.getInt("id");
-				userNameDB = resultSet.getString("name");
-				passwordDB = resultSet.getString("password");
-				if (name.equals(userNameDB) && password.equals(passwordDB)) {
-					return "SUCCESS";
-				} else {
-
-				}
+			resultSet = statement.executeQuery("SELECT * FROM users u WHERE u.`password` = '"+password+"' AND u.`name` = '"+name+"' ");
+			
+			if (resultSet.next()) {
+				user = new User();
+				user.setId(resultSet.getInt(1));
+				user.setFirstName(resultSet.getString(2));
+				user.setLastName(resultSet.getString(3));
+				user.setRoleId(resultSet.getInt(7));
 			}
 
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return "Invalid user crediential";
+		return user;
 	}
 
 	public String signup(LoginBean loginbean) {
@@ -60,7 +56,7 @@ public class LoginDao {
 		String role = loginbean.getRole();
 
 		String insertQuery = "INSERT INTO users (name, firstName, lastName, email, password,  role_id) VALUES ( ?, ?,?, ?, ?,? )";
-		System.out.println("insert query " + insertQuery);
+		
 		java.sql.PreparedStatement insert = null;
 		Connection con = null;
 		Statement statement = null;
