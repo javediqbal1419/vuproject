@@ -50,11 +50,11 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		// Change type to "bar", "area", "spline", "pie",etc.
 		type: "column",
 		dataPoints: [
-			{ label: "apple",  y: 90  },
-			{ label: "orange", y: 15  },
-			{ label: "banana", y: 25  },
-			{ label: "mango",  y: 30  },
-			{ label: "grape",  y: 28  }
+			{ label: "Project1",  y: 90  },
+			{ label: "Project2", y: 15  },
+			{ label: "Project3", y: 25  },
+			{ label: "Project4",  y: 30  },
+			{ label: "Project5",  y: 28  }
 		]
 	}
 	]
