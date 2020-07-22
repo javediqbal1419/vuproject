@@ -51,13 +51,13 @@
 
 								<input type='hidden' name='' value='3' />
 								<h1>Users</h1>
-								<p class="text-muted">Create users here</p>
+								<p class="text-muted">Create user here!</p>
 								<form action="SignUpServlet" method="post">
 									<input type='hidden' name='' value='' />
 									<div class="form-group">
 										<div class="input-group">
 											<input type="text" name="user" maxlength="150" autofocus
-												class="form-control" placeholder="Username" required
+												class="form-control" placeholder="User Name" required
 												id="user" />
 											<div class="input-group-append">
 												<span class="input-group-text"><i class="fa fa-user"></i></span>
@@ -67,7 +67,7 @@
 									<div class="form-group">
 										<div class="input-group">
 											<input type="text" name="firstName" maxlength="30"
-												class="form-control" placeholder="First name" id="firstName" />
+												class="form-control" placeholder="First Name" id="firstName" />
 											<div class="input-group-append">
 												<span class="input-group-text"><i class="fa fa-user"></i></span>
 											</div>
@@ -76,7 +76,7 @@
 									<div class="form-group">
 										<div class="input-group">
 											<input type="text" name="lastName" maxlength="150"
-												class="form-control" placeholder="Last name" id="lastName" />
+												class="form-control" placeholder="Last Name" id="lastName" />
 											<div class="input-group-append">
 												<span class="input-group-text"><i class="fa fa-user"></i></span>
 											</div>
@@ -198,6 +198,6 @@
 		}
 	}
 </script>
-<<script type="text/javascript">
+<script type="text/javascript">
 function myFunction(){ matchpass(); updateUser(); }
 </script>

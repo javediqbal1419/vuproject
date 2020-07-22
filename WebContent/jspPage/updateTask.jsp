@@ -230,7 +230,8 @@ function showVal(newVal,selectedId){
                 url: "<%=request.getContextPath()%>/UpdateTaskStatusServlet",
                 data: {
 
-                  //  taskStatus: $("#taskStatus").val(),
+                  taskStatus: $("#taskStatus").val(),
+                  
                     taskId: 10,
                    // taskpercent: $("#taskpercent").val,
                 },

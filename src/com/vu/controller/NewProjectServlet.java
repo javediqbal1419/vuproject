@@ -48,5 +48,6 @@ public class NewProjectServlet extends HttpServlet {
 
 		NewProjectDao addProjectDao = new NewProjectDao();
 		String addProject = addProjectDao.addProject(projectName, userName, hours, startDate, endDate,  desp);
+		
 	}
 }

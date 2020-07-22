@@ -144,7 +144,7 @@
 									<div class="col-sm-3">
 										<div class="callout callout-warning">
 											<small class="text-muted">Over Due Projects</small> <br>
-											<strong class="h4">${complete }</strong>
+											<strong class="h4">${overdue }</strong>
 											<div class="chart-wrapper">
 												<div class="chartjs-size-monitor"
 													style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">

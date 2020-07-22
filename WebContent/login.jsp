@@ -66,7 +66,7 @@
 								</div>
 								<div class="row">
 									<div class="col-6">
-										<button type="submit" class="btn btn-primary px-0">Login</button>
+										<button type="submit" class="btn btn-primary px-4">Login</button>
 									</div>
 									<div class="col-6 text-right">
 										<button type="button" class="btn btn-link px-4">Forgot
@@ -91,9 +91,5 @@
 			</div>
 		</div>
 	</div>
-
-
 </body>
-
-
 </html>

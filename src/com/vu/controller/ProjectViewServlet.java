@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.vu.bo.Project;
+import com.vu.bo.User;
 import com.vu.dao.NewProjectDao;
 
 @WebServlet("/ProjectViewServlet")
@@ -31,6 +32,7 @@ public class ProjectViewServlet extends HttpServlet {
 		request.setAttribute("pending", projectCountMap.get("pending"));
 		request.setAttribute("working", projectCountMap.get("working"));
 		request.setAttribute("complete", projectCountMap.get("complete"));
+		request.setAttribute("overdue", projectCountMap.get("overdue"));
 		request.setAttribute("projectview", projectview);
 		
 		Map<String, Integer> projectStatusProgMap = pdao.projectStatusProg();

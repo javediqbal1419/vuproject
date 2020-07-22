@@ -212,8 +212,8 @@ public class NewProjectDao {
 		ArrayList<Project> userShow = new ArrayList<Project>();
 		StringBuilder query = new StringBuilder(
 				" SELECT u.`id`, CONCAT_WS(' ', firstName, lastName) AS NAME,u.`currentDate` AS u_currentDate, ");
-		query.append("  COUNT(DISTINCT p.`projectName`) AS proCount, ");
-		query.append("  COUNT(DISTINCT t.`id`) AS taskCount,");
+		query.append("  COUNT( p.`projectName`) AS proCount, ");
+		query.append("  COUNT( t.`taskName`) AS taskCount,");
 		query.append(" AVG(IFNULL(t.`taskPercent`,0)) AS proPercent, ");
 		query.append(" AVG(t.`taskPercent`) AS taskPercent");
 		query.append(" FROM  users u	INNER JOIN projects p ON p.`projectUsers` = u.`id`");
@@ -341,7 +341,8 @@ public class NewProjectDao {
 		StringBuilder query = new StringBuilder(
 				"SELECT COUNT(IF (p.`p_status` = '1', 1, NULL)) AS pending,");
 		query.append(" COUNT(IF (p.`p_status` = '2', 1, NULL)) AS working,");
-		query.append(" COUNT(IF (p.`p_status` = '3', 1, NULL)) AS complete");
+		query.append(" COUNT(IF (p.`p_status` = '3', 1, NULL)) AS complete,");
+		query.append(" COUNT(IF(p.`endDate`< DATE(NOW()), 1, NULL)) AS overdue");
 		query.append(" FROM projects p");
 		Connection con = null;
 		Statement statement = null;
@@ -358,6 +359,8 @@ public class NewProjectDao {
 				pc_map.put("working", pc2);
 				int pc3 = resultSet.getInt("complete");
 				pc_map.put("complete", pc3);
+				int pc4 = resultSet.getInt("overdue");
+				pc_map.put("overdue", pc4);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

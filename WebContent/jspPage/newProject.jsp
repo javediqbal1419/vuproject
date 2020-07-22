@@ -117,7 +117,6 @@
 									</select>
 								</div>
 							</div>
-
 							<div class="form-group">
 								<label class="col-form-label">Start Date</label>
 								<div class="input-group">
@@ -126,11 +125,8 @@
 											class="fa fa-calendar-alt"></i></span>
 									</div>
 									<input type="date" name="startDate" id="startDate"
-										class="form-control" placeholder="Enter Start Date" />
+										class="form-control hasDatepicker" value autocomplete= "off" placeholder="Enter Start Date" />
 								</div>
-								
-
-
 							</div>
 							<div class="form-group">
 								<label class="col-form-label">End Date</label>
@@ -140,7 +136,7 @@
 											class="fa fa-calendar-alt"></i></span>
 									</div>
 									<input type="date" name="endDate" id="endDate"
-										class="form-control" placeholder="Enter End Date" />
+										class="form-control hasDatepicker" value autocomplete= "off" placeholder="Enter End Date" />
 								</div>
 
 
@@ -205,4 +201,16 @@
 			window.location.replace("<%=request.getContextPath()%>/jspPage/welcome.jsp");
 
 		}
+	</script>
+	
+	<script type="text/javascript">
+	$("#startDate").datepicker({
+		  showOn: "both",       
+		  onSelect: function(dateText, inst){
+		     $("#sndDate").datepicker("option","minDate",
+		     $("#startDate").datepicker("getDate"));
+		  }
+		});
+	
+	
 	</script>
